@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "218649542174",
+    "project_id": "projeto-edefinir",
+    "storage_bucket": "projeto-edefinir.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:218649542174:android:5c59bcd520fe3081b4780f",
+        "android_client_info": {
+          "package_name": "com.example.edefinir"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCpUN3OIULAv5UP2wP0uucN-BMdZMSLyIY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
