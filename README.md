@@ -1,5 +1,3 @@
 # edefinir
+Repositório do projeto eDefinir
 
-A new Flutter project.
-# eDefinirFlutter
-# eDefinirFlutter
