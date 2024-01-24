@@ -1,4 +1,4 @@
-import 'package:edefinir/view/pages/apresentation.dart';
+import 'package:edefinir/view/pages/apresentacao.dart';
 import 'package:edefinir/view/pages/home.dart';
 import 'package:edefinir/view/pages/login.dart';
 import 'package:flutter/material.dart';
@@ -21,7 +21,7 @@ class MainApp extends StatelessWidget {
     return MaterialApp(
       home: const Scaffold(
         body: Center(
-          child: Apresentation(),
+          child: Apresentacao(),
         ),
       ),
       routes: {

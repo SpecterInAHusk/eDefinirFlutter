@@ -1,102 +1,61 @@
-import 'package:edefinir/model/entities/artigo.dart';
+
 
 class Doenca{
-  late String _nome;
-  late Artigo _artigo;
-  late String _frequencia;
-  late String _intencidade;
-  late String _tipo;
-  late String _tempo;
-  late String _progressao;
-  late String _cuidadados;
-  late String _contraIndicacoes;
-  late String _textoExplicativo;
-  late String _exemploSessaoTreino;
 
-  Doenca(
-    this._nome, this._artigo,
-    this._frequencia, this._intencidade,
-    this._tipo, this._tempo,
-    this._progressao, this._cuidadados,
-    this._contraIndicacoes,
-    this._textoExplicativo,
-    this._exemploSessaoTreino
-  );
+  late String _nome;
+  late String _explicacao;
+  late String _resumo;
+  late String _beneficios;
+  late String _recomendacao;
+  late String _contraIndicacao;
+
+  Doenca(this._nome);
 
   String get nome{
     return _nome;
   }
-  set nome(String nome){
-    _nome = nome;
+
+  set nome(String valor){
+    _nome = valor;
   }
 
-  Artigo get artigo{
-    return _artigo;
-  }
-  set artigo(Artigo artigo){
-    _artigo = artigo;
+  String get explicacao{
+    return _explicacao;
   }
 
-  String get frequencia{
-    return _frequencia;
-  }
-  set frequencia(String frequencia){
-    _frequencia = frequencia;
+  set explicacao(String valor){
+    _explicacao = valor;
   }
 
-  String get intecidade{
-    return _intencidade;
-  }
-  set intecidade(String intecidade){
-    _intencidade = intecidade;
+  String get resumo{
+    return _resumo;
   }
 
-  String get tipo{
-    return _tipo;
-  }
-  set tipo(String tipo){
-    _tipo = tipo;
+  set resumo(String valor){
+    _resumo = valor;
   }
 
-  String get tempo{
-    return _tempo;
-  }
-  set tempo(String tempo){
-    _tempo = tempo;
+  String get beneficios{
+    return _beneficios;
   }
 
-  String get progressao{
-    return _progressao;
-  }
-  set progressao(String progressao){
-    _progressao = progressao;
-  }
-  
-  String get cuidados{
-    return _cuidadados;
-  }
-  set cuidados(String cuidados){
-    _cuidadados = cuidados;
+  set beneficios(String valor){
+    _beneficios = valor;
   }
 
-  String get contraIndicacoes{
-    return _contraIndicacoes;
-  }
-  set contraIndicacoes(String contraIndicacoes){
-    _contraIndicacoes = contraIndicacoes;
+  String get recomendacao{
+    return _recomendacao;
   }
 
-  String get textoExplicativo{
-    return _textoExplicativo;
-  }
-  set textoExplicativo(String textoExplicativo){
-    _textoExplicativo = textoExplicativo;
+  set recomendacao(String valor){
+    _recomendacao = valor;
   }
 
-  String get exemploSessaoTreino{
-    return _exemploSessaoTreino;
+  String get contraIndicacao{
+    return _contraIndicacao;
   }
-  set exemploSessaoTreino(String exemploSessaoTreino){
-    _exemploSessaoTreino = exemploSessaoTreino;
+
+  set contraIndicacao(String valor){
+    _contraIndicacao = valor;
   }
 }
