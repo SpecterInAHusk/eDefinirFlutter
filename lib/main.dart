@@ -1,4 +1,5 @@
 import 'package:edefinir/view/pages/apresentacao.dart';
+import 'package:edefinir/view/pages/doencas/criarDoenca.dart';
 import 'package:edefinir/view/pages/home.dart';
 import 'package:edefinir/view/pages/login.dart';
 import 'package:flutter/material.dart';
@@ -27,6 +28,7 @@ class MainApp extends StatelessWidget {
       routes: {
         '/home': (context) => const Home(),
         '/login': (context) => const LogIn(),
+        '/adddoenca': (context) => CriarDoenca(),
       },
     );
   }
