@@ -10,7 +10,7 @@ class Doenca{
   String? recomendacao;
   String? contraIndicacao;
 
-  Doenca({this.id, this.nome, this.explicacao, this.resumo, this.beneficios, this.recomendacao, this.contraIndicacao});
+  Doenca({this.nome, this.explicacao, this.resumo, this.beneficios, this.recomendacao, this.contraIndicacao});
 
   Doenca.fromMap(Map snapshot, String id) :
       id = snapshot['id'] ?? '',

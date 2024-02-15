@@ -16,7 +16,7 @@ class Home extends StatelessWidget{
           children: [
             const Text("Home Page"),
             ElevatedButton(onPressed: () => {Navigator.pushNamed(context, '/login')}, child: const Text("Ir para Login")),
-            ElevatedButton(onPressed: () => {Navigator.pushNamed(context, '/adddoenca')}, child: const Text("Adicionar Doença")),
+            ElevatedButton(onPressed: () => {Navigator.pushNamed(context, '/doenca')}, child: const Text("Adicionar Doença")),
             Expanded(
               child: ListView(
               children: const [
