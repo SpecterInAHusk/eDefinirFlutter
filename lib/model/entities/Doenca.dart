@@ -23,7 +23,6 @@ class Doenca{
 
   toJson(){
     return {
-      'id': id,
       'nome': nome,
       'explicacao': explicacao,
       'resumo': resumo,

@@ -1,5 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:edefinir/model/entities/doenca.dart';
+import 'package:edefinir/model/entities/Doenca.dart';
 
 class DoencaService{
   final FirebaseFirestore _firestore = FirebaseFirestore.instance;
