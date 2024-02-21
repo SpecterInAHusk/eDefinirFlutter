@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 
 class Home extends StatelessWidget{
   const Home({super.key});
-
 //TODO estilizar barra superior
 //TODO criar barra de pesquisa
 //TODO menu lateral
