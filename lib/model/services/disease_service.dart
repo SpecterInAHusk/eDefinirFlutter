@@ -1,5 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:edefinir/model/entities/Doenca.dart';
+import 'package:edefinir/model/entities/disease.dart';
 
 class DoencaService{
   final FirebaseFirestore _firestore = FirebaseFirestore.instance;
@@ -9,16 +9,16 @@ class DoencaService{
     return _firestore.collection(path).get();
   }
 
-  create(Doenca doenca) {
-    return _firestore.collection(path).add(doenca.toJson());
+  create(Disease disease) {
+    return _firestore.collection(path).add(disease.toJson());
   }
 
   read(String id) {
     return _firestore.collection(path).doc(id);
   }
 
-  update(Doenca doenca, String id) {
-    return _firestore.collection(path).doc(id).update(doenca.toJson());
+  update(Disease disease, String id) {
+    return _firestore.collection(path).doc(id).update(disease.toJson());
   }
 
   delete(String id) {

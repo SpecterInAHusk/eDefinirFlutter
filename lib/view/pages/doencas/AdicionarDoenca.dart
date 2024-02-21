@@ -1,6 +1,7 @@
 import 'package:edefinir/controller/doencas/AdicionarDoencaController.dart';
 import 'package:flutter/material.dart';
 
+// ignore: must_be_immutable
 class AdicionarDoenca extends StatefulWidget{
 
   AdicionarDoencaController controller;
@@ -54,7 +55,7 @@ class _CriarDoencaState extends State<AdicionarDoenca>{
                     if(value == null){
                       return '';
                     }
-                    this.explicacao = value;
+                    explicacao = value;
                   },
                 ),
                 TextFormField(
@@ -65,7 +66,7 @@ class _CriarDoencaState extends State<AdicionarDoenca>{
                     if(value == null){
                       return '';
                     }
-                    this.resumo = value;
+                    resumo = value;
                   },
                 ),
                 TextFormField(
@@ -76,7 +77,7 @@ class _CriarDoencaState extends State<AdicionarDoenca>{
                     if(value == null){
                       return '';
                     }
-                    this.beneficios = value;
+                    beneficios = value;
                   },
                 ),
                 TextFormField(
@@ -87,7 +88,7 @@ class _CriarDoencaState extends State<AdicionarDoenca>{
                     if(value == null){
                       return '';
                     }
-                    this.recomendacao = value;
+                    recomendacao = value;
                   },
                 ),
                 TextFormField(
@@ -98,7 +99,7 @@ class _CriarDoencaState extends State<AdicionarDoenca>{
                     if(value == null){
                       return '';
                     }
-                    this.contraIndicacao = value;
+                    contraIndicacao = value;
                   },
                 ),
                 Padding(
@@ -107,12 +108,12 @@ class _CriarDoencaState extends State<AdicionarDoenca>{
                     onPressed: () {
                       if(_formKey.currentState!.validate()){
                         widget.controller.adicionarDoenca(
-                          nome: nome,
-                          explicacao: explicacao,
-                          resumo: resumo,
-                          beneficios: beneficios,
-                          recomendacao: recomendacao,
-                          contraIndicacao: contraIndicacao
+                          name: nome,
+                          explanation: explicacao,
+                          overview: resumo,
+                          benefits: beneficios,
+                          recommendations: recomendacao,
+                          contraIndications: contraIndicacao
                         );
                       }
                     }, 

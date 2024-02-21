@@ -1,18 +1,18 @@
-import 'package:edefinir/model/entities/Doenca.dart';
-import 'package:edefinir/model/services/DoencaService.dart';
+import 'package:edefinir/model/entities/disease.dart';
+import 'package:edefinir/model/services/disease_service.dart';
 
 class AdicionarDoencaController{
   DoencaService service = DoencaService();
   
-  adicionarDoenca({nome, explicacao, resumo, beneficios, recomendacao, contraIndicacao}){
-    Doenca doenca = Doenca(
-      nome: nome,
-      explicacao: explicacao,
-      resumo: resumo,
-      beneficios: beneficios,
-      recomendacao: recomendacao,
-      contraIndicacao: contraIndicacao
+  adicionarDoenca({name, explanation, overview, benefits, recommendations, contraIndications}){
+    Disease disease = Disease(
+      name: name,
+      explanation: explanation,
+      overview: overview,
+      benefits: benefits,
+      recommendations: recommendations,
+      contraIndications: contraIndications
     );
-    this.service.create(doenca);
+    service.create(disease);
   }
 }
