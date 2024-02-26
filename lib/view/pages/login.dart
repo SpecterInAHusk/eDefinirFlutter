@@ -25,8 +25,8 @@ class _LoginState extends State<Login>{
       body: Center(
         child: Container(
           alignment: Alignment.center,
-          width: 400,
-          height: 200,
+          width: 800,
+          height: 400,
           child: Form(
             key: _formKey,
             child: Column(
@@ -67,8 +67,13 @@ class _LoginState extends State<Login>{
                         );
                       }
                     }, 
-                    child: const Text("Criar"))
+                    child: const Text("Login"))
                 ),
+                ElevatedButton(
+                    onPressed: () {
+                      widget.controller.signout();
+                    },
+                    child: const Text("Logout"))
               ],
             )
           )

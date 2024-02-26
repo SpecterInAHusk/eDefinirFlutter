@@ -1,12 +1,12 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:edefinir/model/entities/disease.dart';
 
-class DoencaService{
+class DiseaseService{
   final FirebaseFirestore _firestore = FirebaseFirestore.instance;
   final String path = "doencas";
 
-  getAll() {
-    return _firestore.collection(path).get();
+  Future<QuerySnapshot<Map<String, dynamic>>> getAll() async{
+    return await _firestore.collection(path).get();
   }
 
   create(Disease disease) {
