@@ -1,6 +1,7 @@
 import 'package:edefinir/view/pages/apresentacao.dart';
 import 'package:edefinir/view/pages/home.dart';
 import 'package:edefinir/view/pages/login.dart';
+import 'package:edefinir/view/pages/detalhes.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'firebase_options.dart';
@@ -27,6 +28,7 @@ class MainApp extends StatelessWidget {
       routes: {
         '/home': (context) => const Home(),
         '/login': (context) => const LogIn(),
+        '/detalhes': (context) => const Detalhes(),
       },
     );
   }
