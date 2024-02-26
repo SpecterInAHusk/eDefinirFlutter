@@ -1,4 +1,6 @@
+import 'package:edefinir/controller/doencas/AdicionarDoencaController.dart';
 import 'package:edefinir/view/pages/apresentacao.dart';
+import 'package:edefinir/view/pages/doencas/AdicionarDoenca.dart';
 import 'package:edefinir/view/pages/home.dart';
 import 'package:edefinir/view/pages/login.dart';
 import 'package:edefinir/view/pages/detalhes.dart';
@@ -27,8 +29,8 @@ class MainApp extends StatelessWidget {
       ),
       routes: {
         '/home': (context) => const Home(),
-        '/login': (context) => const LogIn(),
-        '/detalhes': (context) => const Detalhes(),
+        '/login': (context) =>  Login(),
+        '/doenca': (context) => AdicionarDoenca(controller: AdicionarDoencaController()),
       },
     );
   }

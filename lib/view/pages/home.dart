@@ -8,6 +8,7 @@ class Home extends StatelessWidget {
   const Home({super.key});
 
 //TODO estilizar barra superior na sua classe
+//TODO estilizar barra superior
 //TODO criar barra de pesquisa
 //TODO menu lateral
 //TODO estilizar cores
@@ -74,7 +75,7 @@ class Home extends StatelessWidget {
                                   ElevatedButton(
                                     style: ElevatedButton.styleFrom(backgroundColor: AppColors.colorWhite,
                                     shape: const RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(4.0)))),
-            onPressed: () => {Navigator.pushNamed(context, '/detalhes')},
+            onPressed: () => {Navigator.pushNamed(context, '/doenca')},
                                       child: Text("Saiba mais", style: GoogleFonts.lora(),
                      ),
                                       )

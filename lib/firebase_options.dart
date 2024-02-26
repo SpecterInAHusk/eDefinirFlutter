@@ -25,10 +25,7 @@ class DefaultFirebaseOptions {
       case TargetPlatform.iOS:
         return ios;
       case TargetPlatform.macOS:
-        throw UnsupportedError(
-          'DefaultFirebaseOptions have not been configured for macos - '
-          'you can reconfigure this by running the FlutterFire CLI again.',
-        );
+        return macos;
       case TargetPlatform.windows:
         throw UnsupportedError(
           'DefaultFirebaseOptions have not been configured for windows - '
@@ -47,28 +44,37 @@ class DefaultFirebaseOptions {
   }
 
   static const FirebaseOptions web = FirebaseOptions(
-    apiKey: 'AIzaSyA4nwNrkleeBRe0oUC0glEZATsNm4CH13g',
-    appId: '1:218649542174:web:c5f4aa024ca19226b4780f',
-    messagingSenderId: '218649542174',
-    projectId: 'projeto-edefinir',
-    authDomain: 'projeto-edefinir.firebaseapp.com',
-    storageBucket: 'projeto-edefinir.appspot.com',
+    apiKey: 'AIzaSyCBBOxwiVgV6r1d0xSZRHTdHX7AkX9pP5Q',
+    appId: '1:451873947536:web:f2bcb10a1b0acb7493fd15',
+    messagingSenderId: '451873947536',
+    projectId: 'edefinir-bd3ed',
+    authDomain: 'edefinir-bd3ed.firebaseapp.com',
+    storageBucket: 'edefinir-bd3ed.appspot.com',
   );
 
   static const FirebaseOptions android = FirebaseOptions(
-    apiKey: 'AIzaSyCpUN3OIULAv5UP2wP0uucN-BMdZMSLyIY',
-    appId: '1:218649542174:android:5c59bcd520fe3081b4780f',
-    messagingSenderId: '218649542174',
-    projectId: 'projeto-edefinir',
-    storageBucket: 'projeto-edefinir.appspot.com',
+    apiKey: 'AIzaSyBUBNtq7l-gJB9bdHSjy1B0y100UInst70',
+    appId: '1:451873947536:android:d3eb95248c178c1593fd15',
+    messagingSenderId: '451873947536',
+    projectId: 'edefinir-bd3ed',
+    storageBucket: 'edefinir-bd3ed.appspot.com',
   );
 
   static const FirebaseOptions ios = FirebaseOptions(
-    apiKey: 'AIzaSyDu1e7Tj32PBpOKnRLHIkwHatePs9pPD6Y',
-    appId: '1:218649542174:ios:97345755942651f1b4780f',
-    messagingSenderId: '218649542174',
-    projectId: 'projeto-edefinir',
-    storageBucket: 'projeto-edefinir.appspot.com',
+    apiKey: 'AIzaSyBN2mYqo8cjs9Kt0j0E3g_kKxpMG07Gqtg',
+    appId: '1:451873947536:ios:39850cd801daf76a93fd15',
+    messagingSenderId: '451873947536',
+    projectId: 'edefinir-bd3ed',
+    storageBucket: 'edefinir-bd3ed.appspot.com',
     iosBundleId: 'com.example.edefinir',
+  );
+
+  static const FirebaseOptions macos = FirebaseOptions(
+    apiKey: 'AIzaSyBN2mYqo8cjs9Kt0j0E3g_kKxpMG07Gqtg',
+    appId: '1:451873947536:ios:8552b1446658189893fd15',
+    messagingSenderId: '451873947536',
+    projectId: 'edefinir-bd3ed',
+    storageBucket: 'edefinir-bd3ed.appspot.com',
+    iosBundleId: 'com.example.edefinir.RunnerTests',
   );
 }
