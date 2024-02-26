@@ -10,7 +10,7 @@ class DiseaseService{
   }
 
   create(Disease disease) {
-    return _firestore.collection(path).add(disease.toJson());
+    return _firestore.collection(path).add(disease.toFirebase());
   }
 
   read(String id) {
@@ -18,7 +18,7 @@ class DiseaseService{
   }
 
   update(Disease disease, String id) {
-    return _firestore.collection(path).doc(id).update(disease.toJson());
+    return _firestore.collection(path).doc(id).update(disease.toFirebase());
   }
 
   delete(String id) {

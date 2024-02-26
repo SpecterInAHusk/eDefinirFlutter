@@ -12,8 +12,8 @@ class Disease{
 
   Disease({this.name, this.explanation, this.overview, this.benefits, this.recommendations, this.contraIndications});
 
-  Disease.fromMap(Map snapshot, String id) :
-      id = snapshot['id'] ?? '',
+  Disease.fromMap(Map snapshot, String? id) :
+      this.id = id ?? '',
       name = snapshot['name'],
       explanation = snapshot['explanation'],
       overview = snapshot['overview'],
@@ -22,6 +22,18 @@ class Disease{
       contraIndications = snapshot['contraIndications'];
 
   toJson(){
+    return {
+      'id' : id,
+      'name': name,
+      'explanation': explanation,
+      'overview': overview,
+      'benefits': benefits,
+      'recommendations': recommendations,
+      'contraIndications': contraIndications,
+    };
+  }
+
+  toFirebase(){
     return {
       'name': name,
       'explanation': explanation,
