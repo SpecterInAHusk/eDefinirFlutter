@@ -7,10 +7,10 @@ import 'package:flutter/material.dart';
 // ignore: must_be_immutable
 class AdicionarDoenca extends StatefulWidget{
 
-  AdicionarDoencaController controller;
+  AdicionarDoencaController controller = AdicionarDoencaController();
   HomeController teste = HomeController();
 
-  AdicionarDoenca({super.key, required this.controller}) {
+  AdicionarDoenca({super.key}) {
     espera();
   }
 

@@ -28,7 +28,8 @@ class MainApp extends StatelessWidget {
         '/': (_) => Apresentacao(),
         '/home': (context) => Home(),
         '/login': (context) =>  Login(),
-        '/doenca': (context) => AdicionarDoenca(controller: AdicionarDoencaController()),
+        '/doenca': (context) => Detalhes(),
+        '/add': (context) => AdicionarDoenca()
       },
     );
   }
