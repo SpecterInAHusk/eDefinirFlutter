@@ -1,6 +1,7 @@
-import 'package:edefinir/controller/LoginController.dart';
+import 'package:edefinir/controller/login_controller.dart';
 import 'package:flutter/material.dart';
 
+// ignore: must_be_immutable
 class Login extends StatefulWidget{
 
   LoginController controller = LoginController();
@@ -24,8 +25,8 @@ class _LoginState extends State<Login>{
       body: Center(
         child: Container(
           alignment: Alignment.center,
-          width: 400,
-          height: 200,
+          width: 800,
+          height: 400,
           child: Form(
             key: _formKey,
             child: Column(
@@ -62,12 +63,17 @@ class _LoginState extends State<Login>{
                       if(_formKey.currentState!.validate()){
                         widget.controller.signin(
                           email: email,
-                          senha: senha
+                          password: senha
                         );
                       }
                     }, 
-                    child: const Text("Criar"))
+                    child: const Text("Login"))
                 ),
+                ElevatedButton(
+                    onPressed: () {
+                      widget.controller.signout();
+                    },
+                    child: const Text("Logout"))
               ],
             )
           )

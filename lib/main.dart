@@ -22,12 +22,10 @@ class MainApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home: const Scaffold(
-        body: Center(
-          child: Apresentacao(),
-        ),
-      ),
+      title: "eDefinir",
+      initialRoute: '/',
       routes: {
+        '/': (_) => Apresentacao(),
         '/home': (context) => const Home(),
         '/login': (context) =>  Login(),
         '/doenca': (context) => AdicionarDoenca(controller: AdicionarDoencaController()),
