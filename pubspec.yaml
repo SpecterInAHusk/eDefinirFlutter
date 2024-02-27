@@ -9,6 +9,7 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+  google_fonts: ^6.1.0
   cloud_firestore: ^4.14.0
   firebase_core: ^2.24.2
   provider: ^6.1.1
@@ -24,3 +25,4 @@ dev_dependencies:
 
 flutter:
   uses-material-design: true
+
