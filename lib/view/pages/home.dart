@@ -1,11 +1,34 @@
+import 'package:edefinir/controller/home_controller.dart';
+import 'package:edefinir/model/entities/disease.dart';
+
 import '../components/widgets/drawer.dart';
 import 'package:flutter/material.dart';
 import '../components/colors/colors.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 
-class Home extends StatelessWidget {
-  const Home({super.key});
+class Home extends StatefulWidget{
+
+  HomeController controller = HomeController();
+
+  @override
+  State<StatefulWidget> createState() => _HomeState();
+
+}
+
+class _HomeState extends State<Home> {
+
+  late List<Disease> diseases = [];
+
+  @override
+  void initState(){
+    super.initState();
+    widget.controller.getAllDiseas().then((value) => {
+      setState(
+        () => diseases = value
+      )
+    });
+  }
 
 //TODO estilizar barra superior na sua classe
 //TODO estilizar barra superior
@@ -35,12 +58,15 @@ class Home extends StatelessWidget {
             child: Text("Ir para Login"), //WARN esse botão é apenas para teste,
           ),
           Expanded(
-            child: ListView.builder(
-              itemCount: 10,
+            child: diseases.isEmpty
+            ? Center(child: CircularProgressIndicator()):
+            ListView.builder(
+              itemCount: diseases.length,
               itemBuilder: (context, index) {
+                Disease disease = diseases[index];
                 return Card(
                   child: ExpansionTile(
-                    title: Text("Doença $index", style: GoogleFonts.lora(textStyle: const TextStyle(color: AppColors.colorWhite),)), //TODO arrumar fonte do título e ícone de seta
+                    title: Text(disease.name, style: GoogleFonts.lora(textStyle: const TextStyle(color: AppColors.colorWhite),)), //TODO arrumar fonte do título e ícone de seta
                     initiallyExpanded: true,
                     maintainState: true,
                     expandedAlignment: Alignment.center,
@@ -66,7 +92,7 @@ class Home extends StatelessWidget {
                                     ),
                                     child: Padding(
                                       padding: const EdgeInsets.all(8.0),
-                                      child: Text("Descrição da Doençaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa $index", style: GoogleFonts.lora(),),
+                                      child: Text(disease.overview, style: GoogleFonts.lora(),),
                                     ),
                                   ),
                                   const SizedBox(height: 8.0,), //Espaço entre caixa de texto e botão

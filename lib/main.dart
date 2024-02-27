@@ -26,7 +26,7 @@ class MainApp extends StatelessWidget {
       initialRoute: '/',
       routes: {
         '/': (_) => Apresentacao(),
-        '/home': (context) => const Home(),
+        '/home': (context) => Home(),
         '/login': (context) =>  Login(),
         '/doenca': (context) => AdicionarDoenca(controller: AdicionarDoencaController()),
       },

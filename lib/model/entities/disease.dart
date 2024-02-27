@@ -3,14 +3,21 @@
 class Disease{
 
   String? id;
-  String? name;
-  String? explanation;
-  String? overview;
-  String? benefits;
-  String? recommendations;
-  String? contraIndications;
+  String name;
+  String explanation;
+  String overview;
+  String benefits;
+  String recommendations;
+  String contraIndications;
 
-  Disease({this.name, this.explanation, this.overview, this.benefits, this.recommendations, this.contraIndications});
+  Disease({
+    required this.name,
+    required this.explanation,
+    required this.overview,
+    required this.benefits,
+    required this.recommendations,
+    required this.contraIndications
+    });
 
   Disease.fromMap(Map snapshot, String? id) :
       this.id = id ?? '',
