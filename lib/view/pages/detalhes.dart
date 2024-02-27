@@ -6,7 +6,10 @@ class Detalhes extends StatelessWidget{
 
   @override
   Widget build(BuildContext context) {
+    
+    //Doença por parametro
     Disease disease = ModalRoute.of(context)!.settings.arguments as Disease;
+    
     return Scaffold(
       body: Center(
         child: Column(

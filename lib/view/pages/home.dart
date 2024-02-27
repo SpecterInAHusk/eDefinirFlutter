@@ -18,8 +18,10 @@ class Home extends StatefulWidget{
 
 class _HomeState extends State<Home> {
 
+  //Lista de Doenças
   late List<Disease> diseases = [];
 
+  //Funcção de Inicialização do Estado, pega os valores da controller e joga na Lista de Doenças
   @override
   void initState(){
     super.initState();
@@ -58,12 +60,12 @@ class _HomeState extends State<Home> {
             child: Text("Ir para Login"), //WARN esse botão é apenas para teste,
           ),
           Expanded(
-            child: diseases.isEmpty
-            ? Center(child: CircularProgressIndicator()):
+            child: diseases.isEmpty //Verifica se a lista esta vazia
+            ? Center(child: CircularProgressIndicator()): //Se estiver roda um carregamento
             ListView.builder(
-              itemCount: diseases.length,
+              itemCount: diseases.length, //tamanho da lista
               itemBuilder: (context, index) {
-                Disease disease = diseases[index];
+                Disease disease = diseases[index]; //doenca do index da lista
                 return Card(
                   child: ExpansionTile(
                     title: Text(disease.name, style: GoogleFonts.lora(textStyle: const TextStyle(color: AppColors.colorWhite),)), //TODO arrumar fonte do título e ícone de seta
