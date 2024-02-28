@@ -1,8 +1,10 @@
+import 'package:flutter/widgets.dart';
+
 import '../components/widgets/drawer.dart';
 import 'package:flutter/material.dart';
 import '../components/colors/colors.dart';
 import 'package:google_fonts/google_fonts.dart';
-
+import '../components/widgets/arrow_icon.dart';
 
 class Home extends StatelessWidget {
   const Home({super.key});
@@ -10,11 +12,7 @@ class Home extends StatelessWidget {
 //TODO estilizar barra superior na sua classe
 //TODO criar barra de pesquisa
 //TODO menu lateral
-//TODO estilizar cores
-//TODO rotas para navegar para a página de detalhes
 //TODO scrollbar
-//TODO clicar em qualquer parte de um cartão expandido leva à página de detalhes (exceto seta), usar ExpansionTileController:w
-//TODO Estilizar cabeçalho does cartões expansíveis
 //TODO Mover cartões expansíveis para sua própria classe para serem usados em home e detalhes
   //https://stackoverflow.com/questions/49557555/custom-style-or-theme-for-expansion-tile-header-flutter
 //TODO arrumar versão do pubspec para combinar com a branch do lorenzo
@@ -23,7 +21,7 @@ class Home extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.blue,
+        backgroundColor: AppColors.colorLightGrey,
         title: const Text("Home"),
       ),
       drawer: MyDrawer(),
@@ -38,9 +36,19 @@ class Home extends StatelessWidget {
               itemCount: 10,
               itemBuilder: (context, index) {
                 return Card(
+                  shape: const RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(20))),
                   child: ExpansionTile(
-                    title: Text("Doença $index", style: GoogleFonts.lora(textStyle: const TextStyle(color: AppColors.colorWhite),)), //TODO arrumar fonte do título e ícone de seta
+                    title: Row(
+                        children: [
+                          Text("Doença $index",
+                              style: GoogleFonts.lora(
+                                  textStyle: const TextStyle(
+                                      color: AppColors.colorWhite),
+                                  fontSize: 30)),
+                                  ]
+                     ), //TODO ícone de seta
                     initiallyExpanded: true,
+                    iconColor: AppColors.colorWhite,
                     maintainState: true,
                     expandedAlignment: Alignment.center,
                     backgroundColor: AppColors.colorBlueLight,
@@ -65,19 +73,33 @@ class Home extends StatelessWidget {
                                     ),
                                     child: Padding(
                                       padding: const EdgeInsets.all(8.0),
-                                      child: Text("Descrição da Doençaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa $index", style: GoogleFonts.lora(),),
+                                      child: Text(
+                                        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc nec risus dignissim, posuere mi ut, luctus velit. Nullam semper fringilla maximus. Nunc bibendum sed tortor ac venenatis. Curabitur dui ligula, consequat vel nisl sit amet, suscipit cursus nunc. Aliquam ut euismod tellus. Quisque vehicula facilisis nibh. Aliquam non imperdiet nulla, ut dignissim libero. Praesent rutrum arcu sed commodo rutrum. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos.",
+                                        style: GoogleFonts.lora(),
+                                      ),
                                     ),
                                   ),
-                                  const SizedBox(height: 8.0,), //Espaço entre caixa de texto e botão
+                                  const SizedBox(
+                                    height: 8.0,
+                                  ), //Espaço entre caixa de texto e botão
 
                                   //Botão para Detalhes
                                   ElevatedButton(
-                                    style: ElevatedButton.styleFrom(backgroundColor: AppColors.colorWhite,
-                                    shape: const RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(4.0)))),
-            onPressed: () => {Navigator.pushNamed(context, '/detalhes')},
-                                      child: Text("Saiba mais", style: GoogleFonts.lora(),
-                     ),
-                                      )
+                                    style: ElevatedButton.styleFrom(
+                                        backgroundColor: AppColors.colorWhite,
+                                        shape: const RoundedRectangleBorder(
+                                            borderRadius: BorderRadius.all(
+                                                Radius.circular(4.0)))),
+                                    onPressed: () => {
+                                      Navigator.pushNamed(context, '/detalhes')
+                                    },
+                                    child: Text(
+                                      "Saiba mais",
+                                      style: GoogleFonts.lora(
+                                          textStyle: const TextStyle(
+                                              color: AppColors.colorDarkBlue)),
+                                    ),
+                                  )
                                 ],
                               ))),
                     ],
