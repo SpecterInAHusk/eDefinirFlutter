@@ -15,9 +15,10 @@ class Login extends StatefulWidget{
 class _LoginState extends State<Login>{
 
   final _formKey = GlobalKey<FormState>();
+  final _emailController = TextEditingController();
+  final _passwordController = TextEditingController();
 
-  String? email;
-  String? senha;
+  bool error = false;
   
   @override
   Widget build(BuildContext context) {
@@ -25,46 +26,59 @@ class _LoginState extends State<Login>{
       body: Center(
         child: Container(
           alignment: Alignment.center,
-          width: 800,
+          width: 400,
           height: 400,
           child: Form(
             key: _formKey,
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
+                if(error)
+                  Text("Email ou Senha Incorretos", style: TextStyle(color: Colors.red)),
                 TextFormField(
+                  controller: _emailController,
                   decoration: const InputDecoration(
                     hintText: "Email"
                   ),
-                  validator: (value) {
-                    if(value == null || value.isEmpty){
-                      return 'Nome vazio';
+                  validator: (email) {
+                    if(email == null || email.isEmpty){
+                      return 'Insira um email';
                     }
-                    email = value;
                     return null;
                   },
                 ),
                 TextFormField(
+                  controller: _passwordController,
                   decoration: const InputDecoration(
                     hintText: "Senha"
                   ),
-                  validator: (value) {
-                    if(value == null || value.isEmpty){
-                      return 'Nome vazio';
+                  obscureText: true,
+                  validator: (password) {
+                    if(password == null || password.isEmpty){
+                      return 'Insira uma Senha';
+                    }else if(password.length < 6){
+                      return 'Senha muito curta';
                     }
-                    senha = value;
                     return null;
                   },
                 ),
                 Padding(
                   padding: const EdgeInsets.symmetric(vertical: 16),
                   child: ElevatedButton(
-                    onPressed: () {
+                    onPressed: () async {
                       if(_formKey.currentState!.validate()){
-                        widget.controller.signin(
-                          email: email,
-                          password: senha
+                        bool noError = await widget.controller.signin(
+                          email: _emailController.text,
+                          password: _passwordController.text
                         );
+                        if(noError){
+                          Navigator.pop(context);
+                        }else{
+                          _passwordController.clear();
+                          setState(() {
+                            error = true;
+                          });
+                        }
                       }
                     }, 
                     child: const Text("Login"))

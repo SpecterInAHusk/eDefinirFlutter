@@ -1,10 +1,22 @@
+import 'dart:async';
+
 import 'package:edefinir/model/services/auth_service.dart';
 
 class LoginController{
+  
+  final _errorController = StreamController<String>();
   AuthService authService = AuthService();
 
-  signin({email, password}) async{
-    await authService.signin(email, password);
+  Future<bool> signin({email, password}) async{
+    bool noError = false;
+    await authService.signin(email, password)
+    .then((value) => {noError = true})
+    .catchError((error) => {noError = false});
+    return noError;
+  }
+
+  dispose(){
+    _errorController.close();
   }
 
   signout() async{
