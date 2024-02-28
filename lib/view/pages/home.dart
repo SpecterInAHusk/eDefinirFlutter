@@ -1,3 +1,4 @@
+import 'package:flutter/widgets.dart';
 import 'package:edefinir/controller/home_controller.dart';
 import 'package:edefinir/model/entities/disease.dart';
 
@@ -5,7 +6,7 @@ import '../components/widgets/drawer.dart';
 import 'package:flutter/material.dart';
 import '../components/colors/colors.dart';
 import 'package:google_fonts/google_fonts.dart';
-
+import '../components/widgets/arrow_icon.dart';
 
 class Home extends StatefulWidget{
 
@@ -36,11 +37,7 @@ class _HomeState extends State<Home> {
 //TODO estilizar barra superior
 //TODO criar barra de pesquisa
 //TODO menu lateral
-//TODO estilizar cores
-//TODO rotas para navegar para a página de detalhes
 //TODO scrollbar
-//TODO clicar em qualquer parte de um cartão expandido leva à página de detalhes (exceto seta), usar ExpansionTileController:w
-//TODO Estilizar cabeçalho does cartões expansíveis
 //TODO Mover cartões expansíveis para sua própria classe para serem usados em home e detalhes
   //https://stackoverflow.com/questions/49557555/custom-style-or-theme-for-expansion-tile-header-flutter
 //TODO arrumar versão do pubspec para combinar com a branch do lorenzo
@@ -49,7 +46,7 @@ class _HomeState extends State<Home> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.blue,
+        backgroundColor: AppColors.colorLightGrey,
         title: const Text("Home"),
       ),
       drawer: MyDrawer(),
@@ -67,9 +64,19 @@ class _HomeState extends State<Home> {
               itemBuilder: (context, index) {
                 Disease disease = diseases[index]; //doenca do index da lista
                 return Card(
+                  shape: const RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(20))),
                   child: ExpansionTile(
-                    title: Text(disease.name, style: GoogleFonts.lora(textStyle: const TextStyle(color: AppColors.colorWhite),)), //TODO arrumar fonte do título e ícone de seta
+                    title: Row(
+                        children: [
+                          Text(disease.name,
+                              style: GoogleFonts.lora(
+                                  textStyle: const TextStyle(
+                                      color: AppColors.colorWhite),
+                                  fontSize: 30)),
+                                  ]
+                     ), //TODO ícone de seta
                     initiallyExpanded: true,
+                    iconColor: AppColors.colorWhite,
                     maintainState: true,
                     expandedAlignment: Alignment.center,
                     backgroundColor: AppColors.colorBlueLight,
@@ -94,10 +101,14 @@ class _HomeState extends State<Home> {
                                     ),
                                     child: Padding(
                                       padding: const EdgeInsets.all(8.0),
-                                      child: Text(disease.overview, style: GoogleFonts.lora(),),
+                                      child: Text(disease.overview,
+                                        style: GoogleFonts.lora(),
+                                      ),
                                     ),
                                   ),
-                                  const SizedBox(height: 8.0,), //Espaço entre caixa de texto e botão
+                                  const SizedBox(
+                                    height: 8.0,
+                                  ), //Espaço entre caixa de texto e botão
 
                                   //Botão para Detalhes
                                   ElevatedButton(
