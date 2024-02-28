@@ -1,4 +1,6 @@
 import 'package:flutter/widgets.dart';
+import 'package:edefinir/controller/home_controller.dart';
+import 'package:edefinir/model/entities/disease.dart';
 
 import '../components/widgets/drawer.dart';
 import 'package:flutter/material.dart';
@@ -6,10 +8,33 @@ import '../components/colors/colors.dart';
 import 'package:google_fonts/google_fonts.dart';
 import '../components/widgets/arrow_icon.dart';
 
-class Home extends StatelessWidget {
-  const Home({super.key});
+class Home extends StatefulWidget{
+
+  HomeController controller = HomeController();
+
+  @override
+  State<StatefulWidget> createState() => _HomeState();
+
+}
+
+class _HomeState extends State<Home> {
+
+  //Lista de Doenças
+  late List<Disease> diseases = [];
+
+  //Funcção de Inicialização do Estado, pega os valores da controller e joga na Lista de Doenças
+  @override
+  void initState(){
+    super.initState();
+    widget.controller.getAllDiseas().then((value) => {
+      setState(
+        () => diseases = value
+      )
+    });
+  }
 
 //TODO estilizar barra superior na sua classe
+//TODO estilizar barra superior
 //TODO criar barra de pesquisa
 //TODO menu lateral
 //TODO scrollbar
@@ -32,15 +57,18 @@ class Home extends StatelessWidget {
             child: Text("Ir para Login"), //WARN esse botão é apenas para teste,
           ),
           Expanded(
-            child: ListView.builder(
-              itemCount: 10,
+            child: diseases.isEmpty //Verifica se a lista esta vazia
+            ? Center(child: CircularProgressIndicator()): //Se estiver roda um carregamento
+            ListView.builder(
+              itemCount: diseases.length, //tamanho da lista
               itemBuilder: (context, index) {
+                Disease disease = diseases[index]; //doenca do index da lista
                 return Card(
                   shape: const RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(20))),
                   child: ExpansionTile(
                     title: Row(
                         children: [
-                          Text("Doença $index",
+                          Text(disease.name,
                               style: GoogleFonts.lora(
                                   textStyle: const TextStyle(
                                       color: AppColors.colorWhite),
@@ -73,8 +101,7 @@ class Home extends StatelessWidget {
                                     ),
                                     child: Padding(
                                       padding: const EdgeInsets.all(8.0),
-                                      child: Text(
-                                        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc nec risus dignissim, posuere mi ut, luctus velit. Nullam semper fringilla maximus. Nunc bibendum sed tortor ac venenatis. Curabitur dui ligula, consequat vel nisl sit amet, suscipit cursus nunc. Aliquam ut euismod tellus. Quisque vehicula facilisis nibh. Aliquam non imperdiet nulla, ut dignissim libero. Praesent rutrum arcu sed commodo rutrum. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos.",
+                                      child: Text(disease.overview,
                                         style: GoogleFonts.lora(),
                                       ),
                                     ),
@@ -85,21 +112,12 @@ class Home extends StatelessWidget {
 
                                   //Botão para Detalhes
                                   ElevatedButton(
-                                    style: ElevatedButton.styleFrom(
-                                        backgroundColor: AppColors.colorWhite,
-                                        shape: const RoundedRectangleBorder(
-                                            borderRadius: BorderRadius.all(
-                                                Radius.circular(4.0)))),
-                                    onPressed: () => {
-                                      Navigator.pushNamed(context, '/detalhes')
-                                    },
-                                    child: Text(
-                                      "Saiba mais",
-                                      style: GoogleFonts.lora(
-                                          textStyle: const TextStyle(
-                                              color: AppColors.colorDarkBlue)),
-                                    ),
-                                  )
+                                    style: ElevatedButton.styleFrom(backgroundColor: AppColors.colorWhite,
+                                    shape: const RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(4.0)))),
+            onPressed: () => {Navigator.pushNamed(context, '/doenca', arguments: disease)},
+                                      child: Text("Saiba mais", style: GoogleFonts.lora(),
+                     ),
+                                      )
                                 ],
                               ))),
                     ],

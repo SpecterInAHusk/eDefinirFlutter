@@ -1,4 +1,6 @@
+import 'package:edefinir/controller/doencas/AdicionarDoencaController.dart';
 import 'package:edefinir/view/pages/apresentacao.dart';
+import 'package:edefinir/view/pages/doencas/AdicionarDoenca.dart';
 import 'package:edefinir/view/pages/home.dart';
 import 'package:edefinir/view/pages/login.dart';
 import 'package:edefinir/view/pages/detalhes.dart';
@@ -20,15 +22,14 @@ class MainApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home: const Scaffold(
-        body: Center(
-          child: Apresentacao(),
-        ),
-      ),
+      title: "eDefinir",
+      initialRoute: '/',
       routes: {
-        '/home': (context) => const Home(),
-        '/login': (context) => const LogIn(),
-        '/detalhes': (context) => const Detalhes(),
+        '/': (_) => Apresentacao(),
+        '/home': (context) => Home(),
+        '/login': (context) =>  Login(),
+        '/doenca': (context) => Detalhes(),
+        '/add': (context) => AdicionarDoenca()
       },
     );
   }
