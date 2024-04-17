@@ -4,7 +4,7 @@ import '../colors/colors.dart';
 class CustomArrowIcon extends StatelessWidget {
   final Color color;
 
-  const CustomArrowIcon({this.color = AppColors.colorWhite});
+  const CustomArrowIcon({super.key, this.color = AppColors.colorWhite});
 
 //Widget para ícone da seta dos cartões
   @override

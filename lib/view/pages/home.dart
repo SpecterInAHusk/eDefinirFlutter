@@ -1,4 +1,3 @@
-import 'package:flutter/widgets.dart';
 import 'package:edefinir/controller/home_controller.dart';
 import 'package:edefinir/model/entities/disease.dart';
 
@@ -6,11 +5,12 @@ import '../components/widgets/drawer.dart';
 import 'package:flutter/material.dart';
 import '../components/colors/colors.dart';
 import 'package:google_fonts/google_fonts.dart';
-import '../components/widgets/arrow_icon.dart';
 
 class Home extends StatefulWidget{
 
   HomeController controller = HomeController();
+
+  Home({super.key});
 
   @override
   State<StatefulWidget> createState() => _HomeState();
@@ -49,16 +49,16 @@ class _HomeState extends State<Home> {
         backgroundColor: AppColors.colorLightGrey,
         title: const Text("Home"),
       ),
-      drawer: MyDrawer(),
+      drawer: const MyDrawer(),
       body: Column(
         children: [
           ElevatedButton(
             onPressed: () => {Navigator.pushNamed(context, '/login')},
-            child: Text("Ir para Login"), //WARN esse botão é apenas para teste,
+            child: const Text("Ir para Login"), //WARN esse botão é apenas para teste,
           ),
           Expanded(
             child: diseases.isEmpty //Verifica se a lista esta vazia
-            ? Center(child: CircularProgressIndicator()): //Se estiver roda um carregamento
+            ? const Center(child: CircularProgressIndicator()): //Se estiver roda um carregamento
             ListView.builder(
               itemCount: diseases.length, //tamanho da lista
               itemBuilder: (context, index) {

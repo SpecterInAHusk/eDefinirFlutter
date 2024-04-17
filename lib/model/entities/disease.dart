@@ -20,7 +20,7 @@ class Disease{
     });
 
   Disease.fromMap(Map snapshot, String? id) :
-      this.id = id ?? '',
+      id = id ?? '',
       name = snapshot['name'],
       explanation = snapshot['explanation'],
       overview = snapshot['overview'],

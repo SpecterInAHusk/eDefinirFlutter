@@ -66,6 +66,7 @@ class _CriarDoencaState extends State<AdicionarDoenca>{
                       return '';
                     }
                     explicacao = value;
+                    return null;
                   },
                 ),
                 TextFormField(
@@ -77,6 +78,7 @@ class _CriarDoencaState extends State<AdicionarDoenca>{
                       return '';
                     }
                     resumo = value;
+                    return null;
                   },
                 ),
                 TextFormField(
@@ -88,6 +90,7 @@ class _CriarDoencaState extends State<AdicionarDoenca>{
                       return '';
                     }
                     beneficios = value;
+                    return null;
                   },
                 ),
                 TextFormField(
@@ -99,6 +102,7 @@ class _CriarDoencaState extends State<AdicionarDoenca>{
                       return '';
                     }
                     recomendacao = value;
+                    return null;
                   },
                 ),
                 TextFormField(
@@ -110,6 +114,7 @@ class _CriarDoencaState extends State<AdicionarDoenca>{
                       return '';
                     }
                     contraIndicacao = value;
+                    return null;
                   },
                 ),
                 Padding(

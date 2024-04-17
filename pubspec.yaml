@@ -4,17 +4,17 @@ publish_to: 'none'
 version: 0.1.0
 
 environment:
-  sdk: '>=3.1.4 <4.0.0'
+  sdk: '>=3.3.0 <4.0.0'
 
 dependencies:
   flutter:
     sdk: flutter
   google_fonts: ^6.1.0
-  cloud_firestore: ^4.14.0
-  firebase_core: ^2.24.2
+  cloud_firestore: ^4.15.5
+  firebase_core: ^2.25.4
   provider: ^6.1.1
   get_it: ^7.6.7
-  firebase_auth: ^4.16.0
+  firebase_auth: ^4.17.5
   localstorage: ^4.0.1+4
   shared_preferences: ^2.2.2
 

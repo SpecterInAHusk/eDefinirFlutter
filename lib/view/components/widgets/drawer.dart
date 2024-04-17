@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
-import 'dart:ui' show ImageFilter;
 
 //TODO criar backdropfilter para efeito blur
 class MyDrawer extends StatelessWidget {
+  const MyDrawer({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Drawer(

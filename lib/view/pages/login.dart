@@ -34,7 +34,7 @@ class _LoginState extends State<Login>{
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 if(error)
-                  Text("Email ou Senha Incorretos", style: TextStyle(color: Colors.red)),
+                  const Text("Email ou Senha Incorretos", style: TextStyle(color: Colors.red)),
                 TextFormField(
                   controller: _emailController,
                   decoration: const InputDecoration(
