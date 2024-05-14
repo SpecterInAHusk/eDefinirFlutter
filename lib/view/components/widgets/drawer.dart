@@ -24,25 +24,86 @@ class MyDrawer extends StatelessWidget {
               ),),
               Expanded( // Usa Expanded para o texto
                 child: Text(
-                  ModalRoute.of(context)!.settings.name!,
+                  //ModalRoute.of(context)!.settings.name!,
+                  "Home",
                   textAlign: TextAlign.center, // Centraliza o texto
                   style: GoogleFonts.lora(
                     textStyle: const TextStyle(
                       color: AppColors.colorDarkBlue,
                     ),
-                    fontSize: 30,
+                    fontSize: 36,
                   ),
                 ),
               ),
             ],
           ),
           ListTile(
-            title: const Text('Item 1'),
-            onTap: () {},
+            title: Container(
+              alignment: Alignment.centerLeft, // Isso define o alinhamento do texto dentro do Container
+              child: Text(
+                'Home',
+                textAlign: TextAlign.left, // Alinha o texto à esquerda
+                style: GoogleFonts.lora(
+                  textStyle: const TextStyle(
+                    color: AppColors.colorDarkBlue, // Substitua AppColors.colorDarkBlue pelo valor correspondente
+                  ),
+                  fontSize: 25,
+                ),
+              ),
+            ),
+            onTap: () => {Navigator.pushNamed(context, '/home')}
           ),
+          const Divider(color: Colors.grey),
           ListTile(
-            title: const Text('Item 2'),
-            onTap: () {},
+            title: Container(
+              alignment: Alignment.centerLeft, // Isso define o alinhamento do texto dentro do Container
+              child: Text(
+                'Sobre',
+                textAlign: TextAlign.left, // Alinha o texto à esquerda
+                style: GoogleFonts.lora(
+                  textStyle: const TextStyle(
+                    color: AppColors.colorDarkBlue, // Substitua AppColors.colorDarkBlue pelo valor correspondente
+                  ),
+                  fontSize: 25,
+                ),
+              ),
+            ),
+            onTap: () => {Navigator.pushNamed(context, '/login')}
+          ),
+          const Divider(color: Colors.grey),
+          ListTile(
+            title: Container(
+              alignment: Alignment.centerLeft, // Isso define o alinhamento do texto dentro do Container
+              child: Text(
+                'Ajuda',
+                textAlign: TextAlign.left, // Alinha o texto à esquerda
+                style: GoogleFonts.lora(
+                  textStyle: const TextStyle(
+                    color: AppColors.colorDarkBlue, // Substitua AppColors.colorDarkBlue pelo valor correspondente
+                  ),
+                  fontSize: 25,
+                ),
+              ),
+            ),
+            onTap: () => {Navigator.pushNamed(context, '/login')}
+          ),
+          const Divider(color: Colors.grey),
+          ListTile(
+            title: Container(
+              alignment: Alignment.centerLeft, // Isso define o alinhamento do texto dentro do Container
+              child: Text(
+                'Acessibilidade',
+                textAlign: TextAlign.left, // Alinha o texto à esquerda
+                style: GoogleFonts.lora(
+                  textStyle: const TextStyle(
+                    color: AppColors.colorDarkBlue, // Substitua AppColors.colorDarkBlue pelo valor correspondente
+                  ),
+                  fontSize: 25,
+                ),
+              ),
+            ),
+            onTap: () => {Navigator.pushNamed(context, '/login')},
+              // Ação ao tocar
           ),
         ],
       ),
