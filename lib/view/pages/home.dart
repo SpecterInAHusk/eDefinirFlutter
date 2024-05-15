@@ -2,6 +2,7 @@ import 'package:edefinir/controller/home_controller.dart';
 import 'package:edefinir/model/entities/disease.dart';
 
 import '../components/widgets/drawer.dart';
+import '../components/widgets/search_bar.dart';
 import 'package:flutter/material.dart';
 import '../components/colors/colors.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -60,6 +61,7 @@ class _HomeState extends State<Home> {
             onPressed: () => {Navigator.pushNamed(context, '/login')},
             child: const Text("Ir para Login"), //WARN esse botão é apenas para teste,
           ),
+          CustomSearchBar(),
           Expanded(
             child: diseases.isEmpty //Verifica se a lista esta vazia
             ? const Center(child: CircularProgressIndicator()): //Se estiver roda um carregamento
