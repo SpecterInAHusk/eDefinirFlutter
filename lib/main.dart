@@ -24,12 +24,12 @@ class MainApp extends StatelessWidget {
       title: "eDefinir",
       initialRoute: '/',
       routes: {
-        '/': (_) => const Apresentacao(),
+        '/': (context) => const Apresentacao(),
         '/home': (context) => Home(),
         '/login': (context) =>  Login(),
         '/doenca': (context) => const Details(),
         '/add': (context) => AdicionarDoenca()
-      },
+      },  
     );
   }
 }
