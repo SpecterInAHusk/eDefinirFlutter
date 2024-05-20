@@ -1,13 +1,22 @@
 
 import 'package:edefinir/controller/doencas/AdicionarDoencaController.dart';
+import 'package:edefinir/controller/home_controller.dart';
+import 'package:edefinir/model/entities/disease.dart';
 import 'package:flutter/material.dart';
 
+// ignore: must_be_immutable
 class AdicionarDoenca extends StatefulWidget{
 
-  final AdicionarDoencaController controller = AdicionarDoencaController();
+  AdicionarDoencaController controller = AdicionarDoencaController();
+  HomeController teste = HomeController();
 
-  AdicionarDoenca({super.key}) {}
+  AdicionarDoenca({super.key}) {
+    espera();
+  }
 
+  espera() async{
+    List<Disease> doenca = await teste.getAllDiseas();
+  }
   
   @override
   State<StatefulWidget> createState() => _CriarDoencaState();

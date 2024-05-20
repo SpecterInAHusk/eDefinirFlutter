@@ -8,7 +8,7 @@ import 'package:google_fonts/google_fonts.dart';
 
 class Home extends StatefulWidget{
 
-  final HomeController controller = HomeController();
+  HomeController controller = HomeController();
 
   Home({super.key});
 
@@ -52,10 +52,6 @@ class _HomeState extends State<Home> {
       drawer: const MyDrawer(),
       body: Column(
         children: [
-          if(widget.controller.isLogged())
-            ElevatedButton(
-            onPressed: () => {Navigator.pushNamed(context, '/add')},
-            child: const Text("Adicionar Doença")),
           ElevatedButton(
             onPressed: () => {Navigator.pushNamed(context, '/login')},
             child: const Text("Ir para Login"), //WARN esse botão é apenas para teste,
