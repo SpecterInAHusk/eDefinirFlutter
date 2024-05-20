@@ -118,10 +118,9 @@ class _HomeState extends State<Home> {
                                   ElevatedButton(
                                     style: ElevatedButton.styleFrom(backgroundColor: AppColors.colorWhite,
                                     shape: const RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(4.0)))),
-            onPressed: () => {Navigator.pushNamed(context, '/doenca', arguments: disease)},
-                                      child: Text("Saiba mais", style: GoogleFonts.lora(),
-                     ),
-                                      )
+                                    onPressed: () => {Navigator.pushNamed(context, '/doenca', arguments: disease)},
+                                    child: Text("Saiba mais", style: GoogleFonts.lora(),),
+                                    )
                                 ],
                               ))),
                     ],
