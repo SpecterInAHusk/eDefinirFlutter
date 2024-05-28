@@ -1,9 +1,10 @@
 import 'package:edefinir/controller/login_controller.dart';
 import 'package:flutter/material.dart';
 
+// ignore: must_be_immutable
 class Login extends StatefulWidget{
 
-  final LoginController controller = LoginController();
+  LoginController controller = LoginController();
 
   Login({super.key});
   
