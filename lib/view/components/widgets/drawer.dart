@@ -1,3 +1,4 @@
+import 'package:edefinir/model/services/auth_service.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -5,7 +6,10 @@ import '../colors/colors.dart';
 
 //TODO criar backdropfilter para efeito blur
 class MyDrawer extends StatelessWidget {
-  const MyDrawer({super.key});
+  
+  final AuthService authService = AuthService();
+
+  MyDrawer({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -113,16 +117,17 @@ class MyDrawer extends StatelessWidget {
           ),
           Padding(
             padding: const EdgeInsets.all(16.0),
-            child: ElevatedButton(
+            child: (authService.getUser() != null) ? ElevatedButton(
               onPressed: () {
-                // Ação do botão
+                authService.siginout();
+                Navigator.popUntil(context, ModalRoute.withName('/home'));
               },
-              child: Text('Logout'),
               style: ElevatedButton.styleFrom(
-                padding: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
-                textStyle: TextStyle(fontSize: 20),
+                padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+                textStyle: const TextStyle(fontSize: 20),
               ),
-            ),
+              child: const Text('Logout'),
+            ) : null
           ),
         ],
       )

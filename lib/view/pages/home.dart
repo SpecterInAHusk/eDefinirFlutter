@@ -50,7 +50,7 @@ class _HomeState extends State<Home> {
         backgroundColor: AppColors.colorLightGrey,
         title: const Text("Home"),
       ),
-      drawer: const MyDrawer(),
+      drawer: MyDrawer(),
       body: Column(
         children: [
           ElevatedButton(
