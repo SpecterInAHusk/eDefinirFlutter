@@ -50,7 +50,7 @@ class _HomeState extends State<Home> {
         backgroundColor: AppColors.colorLightGrey,
         title: const Text("Home"),
       ),
-      drawer: const MyDrawer(),
+      drawer: MyDrawer(),
       body: Column(
         children: [
           ElevatedButton(
@@ -77,7 +77,8 @@ class _HomeState extends State<Home> {
                                   fontSize: 30)),
                                   ]
                      ), //TODO ícone de seta
-                    initiallyExpanded: true,
+                    collapsedBackgroundColor: AppColors.colorBlueLight,
+                    initiallyExpanded: false,
                     iconColor: AppColors.colorWhite,
                     maintainState: true,
                     expandedAlignment: Alignment.center,
