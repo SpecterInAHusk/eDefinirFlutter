@@ -54,6 +54,12 @@ class _HomeState extends State<Home> {
       body: Column(
         children: [
           CustomSearchBar(),
+          if(widget.controller.isLogged()) ... [ElevatedButton(
+              onPressed: () => {
+                Navigator.pushNamed(context, "/add")
+              }, 
+              child: const Text("+Doença")
+            )],
           Expanded(
             child: diseases.isEmpty //Verifica se a lista esta vazia
             ? const Center(child: CircularProgressIndicator()): //Se estiver roda um carregamento

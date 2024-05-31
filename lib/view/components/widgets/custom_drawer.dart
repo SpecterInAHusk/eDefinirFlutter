@@ -120,7 +120,7 @@ class CustomDrawer extends StatelessWidget {
             child: (controller.isLogged()) ? ElevatedButton(
               onPressed: () {
                 controller.logout();
-                Navigator.popUntil(context, ModalRoute.withName('/home'));
+                Navigator.pushNamed(context, "/home");
               },
               style: ElevatedButton.styleFrom(
                 padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
