@@ -53,10 +53,6 @@ class _HomeState extends State<Home> {
       drawer: CustomDrawer(),
       body: Column(
         children: [
-          ElevatedButton(
-            onPressed: () => {Navigator.pushNamed(context, '/login')},
-            child: const Text("Ir para Login"), //WARN esse botão é apenas para teste,
-          ),
           CustomSearchBar(),
           Expanded(
             child: diseases.isEmpty //Verifica se a lista esta vazia

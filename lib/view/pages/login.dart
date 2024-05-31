@@ -72,7 +72,7 @@ class _LoginState extends State<Login>{
                           password: _passwordController.text
                         );
                         if(noError){
-                          Navigator.pop(context);
+                          Navigator.popUntil(context, ModalRoute.withName('/home'));
                         }else{
                           _passwordController.clear();
                           setState(() {

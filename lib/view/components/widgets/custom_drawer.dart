@@ -128,7 +128,16 @@ class CustomDrawer extends StatelessWidget {
                 textStyle: const TextStyle(fontSize: 20),
               ),
               child: const Text('Logout'),
-            ) : null
+            ) : ElevatedButton(
+              onPressed: () {
+                Navigator.pushNamed(context, '/login');
+              },
+              style: ElevatedButton.styleFrom(
+                padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+                textStyle: const TextStyle(fontSize: 20),
+              ),
+              child: const Text('Login'),
+            )
           ),
         ],
       )
