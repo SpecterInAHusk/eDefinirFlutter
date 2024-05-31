@@ -1,5 +1,4 @@
-import 'package:edefinir/controller/components/custom_drawer_controller.dart';
-import 'package:edefinir/model/services/auth_service.dart';
+import 'package:edefinir/controller/components_controllers/custom_drawer_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -8,7 +7,7 @@ import '../colors/colors.dart';
 //TODO criar backdropfilter para efeito blur
 class CustomDrawer extends StatelessWidget {
   
-  final customDrawerController = CustomDrawerController();
+  final controller = CustomDrawerController();
 
   CustomDrawer({super.key});
 
@@ -118,9 +117,9 @@ class CustomDrawer extends StatelessWidget {
           ),
           Padding(
             padding: const EdgeInsets.all(16.0),
-            child: (customDrawerController.isLogged()) ? ElevatedButton(
+            child: (controller.isLogged()) ? ElevatedButton(
               onPressed: () {
-                customDrawerController.logout();
+                controller.logout();
                 Navigator.popUntil(context, ModalRoute.withName('/home'));
               },
               style: ElevatedButton.styleFrom(

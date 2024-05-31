@@ -9,7 +9,7 @@ import 'package:google_fonts/google_fonts.dart';
 
 class Home extends StatefulWidget{
 
-  HomeController controller = HomeController();
+  final HomeController controller = HomeController();
 
   Home({super.key});
 
