@@ -1,3 +1,4 @@
+import 'package:edefinir/controller/components/custom_drawer_controller.dart';
 import 'package:edefinir/model/services/auth_service.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -5,11 +6,11 @@ import 'package:google_fonts/google_fonts.dart';
 import '../colors/colors.dart';
 
 //TODO criar backdropfilter para efeito blur
-class MyDrawer extends StatelessWidget {
+class CustomDrawer extends StatelessWidget {
   
-  final AuthService authService = AuthService();
+  final customDrawerController = CustomDrawerController();
 
-  MyDrawer({super.key});
+  CustomDrawer({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -117,9 +118,9 @@ class MyDrawer extends StatelessWidget {
           ),
           Padding(
             padding: const EdgeInsets.all(16.0),
-            child: (authService.getUser() != null) ? ElevatedButton(
+            child: (customDrawerController.isLogged()) ? ElevatedButton(
               onPressed: () {
-                authService.siginout();
+                customDrawerController.logout();
                 Navigator.popUntil(context, ModalRoute.withName('/home'));
               },
               style: ElevatedButton.styleFrom(

@@ -1,8 +1,8 @@
 import 'package:edefinir/controller/home_controller.dart';
 import 'package:edefinir/model/entities/disease.dart';
 
-import '../components/widgets/drawer.dart';
-import '../components/widgets/search_bar.dart';
+import '../components/widgets/custom_drawer.dart';
+import '../components/widgets/custom_search_bar.dart';
 import 'package:flutter/material.dart';
 import '../components/colors/colors.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -50,7 +50,7 @@ class _HomeState extends State<Home> {
         backgroundColor: AppColors.colorLightGrey,
         title: const Text("Home"),
       ),
-      drawer: MyDrawer(),
+      drawer: CustomDrawer(),
       body: Column(
         children: [
           ElevatedButton(

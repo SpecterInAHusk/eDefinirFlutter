@@ -1,9 +1,7 @@
 import 'package:edefinir/model/entities/disease.dart';
-import 'package:edefinir/model/services/auth_service.dart';
 import 'package:edefinir/model/services/disease_service.dart';
 
 class HomeController{
-  AuthService authService = AuthService();
   DiseaseService diseaseService = DiseaseService();
 
   Future<List<Disease>> getAllDiseas() async{
@@ -17,12 +15,5 @@ class HomeController{
       })
     });
     return diseases;
-  }
-
-  bool isLogged(){
-    if(authService.getUser() != null){
-      return true;
-    }
-    return false;
   }
 }
