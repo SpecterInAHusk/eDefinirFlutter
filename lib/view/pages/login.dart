@@ -83,11 +83,6 @@ class _LoginState extends State<Login>{
                     }, 
                     child: const Text("Login"))
                 ),
-                ElevatedButton(
-                    onPressed: () {
-                      widget.controller.signout();
-                    },
-                    child: const Text("Logout"))
               ],
             )
           )
