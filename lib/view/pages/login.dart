@@ -1,6 +1,7 @@
 import 'package:edefinir/controller/login_controller.dart';
 import 'package:edefinir/view/components/colors/colors.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
 // ignore: must_be_immutable
 class Login extends StatefulWidget{
@@ -77,7 +78,7 @@ class _LoginState extends State<Login>{
                           password: _passwordController.text
                         );
                         if(noError){
-                          Navigator.pushNamed(context, "/home");
+                          context.go("/home");
                         }else{
                           _passwordController.clear();
                           setState(() {

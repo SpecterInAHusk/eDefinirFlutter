@@ -1,5 +1,6 @@
 import 'package:edefinir/controller/home_controller.dart';
 import 'package:edefinir/model/entities/disease.dart';
+import 'package:go_router/go_router.dart';
 
 import '../components/widgets/custom_drawer.dart';
 import '../components/widgets/custom_search_bar.dart';
@@ -56,7 +57,7 @@ class _HomeState extends State<Home> {
           CustomSearchBar(),
           if(widget.controller.isLogged()) ... [ElevatedButton(
               onPressed: () => {
-                Navigator.pushNamed(context, "/add")
+                context.go("/add")
               }, 
               child: const Text("+Doença")
             )],
@@ -118,7 +119,9 @@ class _HomeState extends State<Home> {
                                   ElevatedButton(
                                     style: ElevatedButton.styleFrom(backgroundColor: AppColors.colorWhite,
                                     shape: const RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(4.0)))),
-                                    onPressed: () => {Navigator.pushNamed(context, '/doenca', arguments: disease)},
+                                    onPressed: () => {
+                                      context.go("/doenca", extra: disease)
+                                      },
                                     child: Text("Saiba mais", style: GoogleFonts.lora(),),
                                     )
                                 ],

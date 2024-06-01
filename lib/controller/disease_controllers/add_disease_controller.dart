@@ -1,10 +1,10 @@
 import 'package:edefinir/model/entities/disease.dart';
 import 'package:edefinir/model/services/disease_service.dart';
 
-class CreateDiseaseController{
+class AddDiseaseController{
   DiseaseService service = DiseaseService();
   
-  addDisease({name, explanation, overview, benefits, recommendations, contraIndications}){
+  createDisease({name, explanation, overview, benefits, recommendations, contraIndications}){
     Disease disease = Disease(
       name: name,
       explanation: explanation,

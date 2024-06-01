@@ -1,6 +1,7 @@
 import 'package:edefinir/model/entities/disease.dart';
 import 'package:edefinir/view/components/colors/colors.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class DetailsDisease extends StatelessWidget {
@@ -9,7 +10,7 @@ class DetailsDisease extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     //Doença por parametro
-    Disease disease = ModalRoute.of(context)!.settings.arguments as Disease;
+    final Disease disease = GoRouterState.of(context).extra! as Disease;
 
     return Scaffold(
       appBar: AppBar(

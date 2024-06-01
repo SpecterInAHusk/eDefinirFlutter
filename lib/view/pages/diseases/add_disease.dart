@@ -1,19 +1,19 @@
 
-import 'package:edefinir/controller/disease_controllers/create_disease_controller.dart';
+import 'package:edefinir/controller/disease_controllers/add_disease_controller.dart';
 import 'package:flutter/material.dart';
 
 // ignore: must_be_immutable
-class CreateDisease extends StatefulWidget{
+class AddDisease extends StatefulWidget{
 
-  final CreateDiseaseController controller = CreateDiseaseController();
+  final AddDiseaseController controller = AddDiseaseController();
 
-  CreateDisease({super.key});
+  AddDisease({super.key});
   
   @override
   State<StatefulWidget> createState() => _CreateDiseaseState();
 }
 
-class _CreateDiseaseState extends State<CreateDisease>{
+class _CreateDiseaseState extends State<AddDisease>{
 
   final _formKey = GlobalKey<FormState>();
 
@@ -113,7 +113,7 @@ class _CreateDiseaseState extends State<CreateDisease>{
                   child: ElevatedButton(
                     onPressed: () {
                       if(_formKey.currentState!.validate()){
-                        widget.controller.addDisease(
+                        widget.controller.createDisease(
                           name: nome,
                           explanation: explicacao,
                           overview: resumo,
