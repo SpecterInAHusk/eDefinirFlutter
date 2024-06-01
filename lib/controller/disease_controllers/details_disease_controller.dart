@@ -1,6 +1,6 @@
 import 'package:edefinir/model/services/auth_service.dart';
 
-class DetailsController{
+class DetailsDiseaseController{
   AuthService authService = AuthService();
   
   bool isLogged(){
