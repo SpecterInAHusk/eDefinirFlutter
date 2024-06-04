@@ -18,8 +18,8 @@ class DetailsDisease extends StatelessWidget {
         title: Text(disease.name),
       ),
       body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
+        child: ListView(
+          // mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Card(
               shape: const RoundedRectangleBorder(
@@ -32,7 +32,8 @@ class DetailsDisease extends StatelessWidget {
                               const TextStyle(color: AppColors.colorWhite),
                           fontSize: 30)),
                 ]), //TODO ícone de seta
-                initiallyExpanded: true,
+                collapsedBackgroundColor: AppColors.colorBlueLight,
+                initiallyExpanded: false,
                 iconColor: AppColors.colorWhite,
                 maintainState: true,
                 expandedAlignment: Alignment.center,
@@ -80,6 +81,7 @@ class DetailsDisease extends StatelessWidget {
                               const TextStyle(color: AppColors.colorWhite),
                           fontSize: 30)),
                 ]), //TODO ícone de seta
+                collapsedBackgroundColor: AppColors.colorBlueLight,
                 initiallyExpanded: false,
                 iconColor: AppColors.colorWhite,
                 maintainState: true,
@@ -128,6 +130,7 @@ class DetailsDisease extends StatelessWidget {
                               const TextStyle(color: AppColors.colorWhite),
                           fontSize: 30)),
                 ]), //TODO ícone de seta
+                collapsedBackgroundColor: AppColors.colorBlueLight,
                 initiallyExpanded: false,
                 iconColor: AppColors.colorWhite,
                 maintainState: true,
@@ -176,6 +179,7 @@ class DetailsDisease extends StatelessWidget {
                               const TextStyle(color: AppColors.colorWhite),
                           fontSize: 30)),
                 ]), //TODO ícone de seta
+                collapsedBackgroundColor: AppColors.colorBlueLight,
                 initiallyExpanded: false,
                 iconColor: AppColors.colorWhite,
                 maintainState: true,
