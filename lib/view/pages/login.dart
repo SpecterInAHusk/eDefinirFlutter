@@ -78,7 +78,7 @@ class _LoginState extends State<Login>{
                           password: _passwordController.text
                         );
                         if(noError){
-                          context.go("/home");
+                          context.goNamed("home");
                         }else{
                           _passwordController.clear();
                           setState(() {

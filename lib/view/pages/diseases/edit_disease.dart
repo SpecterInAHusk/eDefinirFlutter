@@ -133,7 +133,7 @@ class _CreateDiseaseState extends State<EditDisease>{
                           recommendations: recomendacao,
                           contraIndications: contraIndicacao
                         );
-                        context.go("/home");
+                        context.goNamed("home");
                       }
                     }, 
                     child: const Text("Editar"))

@@ -27,7 +27,7 @@ class DetailsDisease extends StatelessWidget {
           children: [
             if(diseaseController.isLogged()) ... [ElevatedButton(
               onPressed: () => {
-                context.go("/edit", extra: disease)
+                context.goNamed("edit", extra: disease)
               }, 
               child: const Text("Editar")
             )],

@@ -122,7 +122,7 @@ class _CreateDiseaseState extends State<AddDisease>{
                           recommendations: recomendacao,
                           contraIndications: contraIndicacao
                         );
-                        context.go("/home");
+                        context.goNamed("home");
                       }
                     }, 
                     child: const Text("Criar"))
