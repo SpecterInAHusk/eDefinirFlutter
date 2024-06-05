@@ -1,3 +1,4 @@
+import 'package:edefinir/controller/disease_controllers/details_disease_controller.dart';
 import 'package:edefinir/model/entities/disease.dart';
 import 'package:edefinir/view/components/colors/colors.dart';
 import 'package:flutter/material.dart';
@@ -5,7 +6,10 @@ import 'package:go_router/go_router.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class DetailsDisease extends StatelessWidget {
-  const DetailsDisease({super.key});
+
+  DetailsDisease({super.key});
+
+  final DetailsDiseaseController diseaseController = DetailsDiseaseController();
 
   @override
   Widget build(BuildContext context) {
@@ -21,6 +25,12 @@ class DetailsDisease extends StatelessWidget {
         child: ListView(
           // mainAxisAlignment: MainAxisAlignment.center,
           children: [
+            if(diseaseController.isLogged()) ... [ElevatedButton(
+              onPressed: () => {
+                context.go("/edit", extra: disease)
+              }, 
+              child: const Text("Editar")
+            )],
             Card(
               shape: const RoundedRectangleBorder(
                   borderRadius: BorderRadius.all(Radius.circular(20))),

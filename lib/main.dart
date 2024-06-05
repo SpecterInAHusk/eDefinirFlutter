@@ -2,6 +2,7 @@ import 'dart:js';
 
 import 'package:edefinir/view/pages/apresentacao.dart';
 import 'package:edefinir/view/pages/diseases/add_disease.dart';
+import 'package:edefinir/view/pages/diseases/edit_disease.dart';
 import 'package:edefinir/view/pages/home.dart';
 import 'package:edefinir/view/pages/login.dart';
 import 'package:edefinir/view/pages/diseases/details_disease.dart';
@@ -26,11 +27,15 @@ final _router = GoRouter(
     ),
     GoRoute(
       path: '/doenca',
-      builder: (context, state) => const DetailsDisease(),
+      builder: (context, state) => DetailsDisease(),
     ),
     GoRoute(
       path: '/add',
       builder: (context, state) => AddDisease(),
+    ),
+    GoRoute(
+      path: '/edit',
+      builder: (context, state) => EditDisease(),
     ),
   ]
 );

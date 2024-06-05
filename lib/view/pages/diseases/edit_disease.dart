@@ -3,6 +3,7 @@
 import 'package:edefinir/controller/disease_controllers/edit_disease_controller.dart';
 import 'package:edefinir/model/entities/disease.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
 // ignore: must_be_immutable
 class EditDisease extends StatefulWidget{
@@ -27,7 +28,9 @@ class _CreateDiseaseState extends State<EditDisease>{
 
   @override
   Widget build(BuildContext context) {
-    Disease disease = ModalRoute.of(context)!.settings.arguments as Disease;
+
+    Disease disease = GoRouterState.of(context).extra as Disease;
+
     return Scaffold(
       body: Center(
         child: Container(
@@ -39,6 +42,7 @@ class _CreateDiseaseState extends State<EditDisease>{
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 TextFormField(
+                  initialValue: disease.name,
                   decoration: const InputDecoration(
                     hintText: "Nome"
                   ),
@@ -51,6 +55,7 @@ class _CreateDiseaseState extends State<EditDisease>{
                   },
                 ),
                 TextFormField(
+                  initialValue: disease.explanation,
                   decoration: const InputDecoration(
                     hintText: "Explicação"
                   ),
@@ -63,6 +68,7 @@ class _CreateDiseaseState extends State<EditDisease>{
                   },
                 ),
                 TextFormField(
+                  initialValue: disease.overview,
                   decoration: const InputDecoration(
                     hintText: "Resumo"
                   ),
@@ -75,6 +81,7 @@ class _CreateDiseaseState extends State<EditDisease>{
                   },
                 ),
                 TextFormField(
+                  initialValue: disease.benefits,
                   decoration: const InputDecoration(
                     hintText: "Beneficios"
                   ),
@@ -87,6 +94,7 @@ class _CreateDiseaseState extends State<EditDisease>{
                   },
                 ),
                 TextFormField(
+                  initialValue: disease.recommendations,
                   decoration: const InputDecoration(
                     hintText: "Recomendação"
                   ),
@@ -99,6 +107,7 @@ class _CreateDiseaseState extends State<EditDisease>{
                   },
                 ),
                 TextFormField(
+                  initialValue: disease.contraIndications,
                   decoration: const InputDecoration(
                     hintText: "Contra Indicação"
                   ),
@@ -118,7 +127,7 @@ class _CreateDiseaseState extends State<EditDisease>{
                         
                       }
                     }, 
-                    child: const Text("Criar"))
+                    child: const Text("Editar"))
                   ),
               ],
             ),
