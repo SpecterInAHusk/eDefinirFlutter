@@ -18,24 +18,33 @@ final _router = GoRouter(
       builder: (context, state) => const Apresentacao(),
     ),
     GoRoute(
+      name: "home",
       path: '/home',
       builder: (context, state) => Home(),
+      routes: [
+        GoRoute(
+          name: "add",
+          path: 'add',
+          builder: (context, state) => AddDisease(),
+        ),
+        GoRoute(
+          name: "doenca",
+          path: 'doenca',
+          builder: (context, state) => DetailsDisease(),
+          routes: [
+            GoRoute(
+              name: "edit",
+              path: 'edit',
+              builder: (context, state) => EditDisease(),
+            ),
+          ]
+        ),
+      ]
     ),
     GoRoute(
+      name: "login",
       path: '/login',
       builder: (context, state) => Login(),
-    ),
-    GoRoute(
-      path: '/doenca',
-      builder: (context, state) => DetailsDisease(),
-    ),
-    GoRoute(
-      path: '/add',
-      builder: (context, state) => AddDisease(),
-    ),
-    GoRoute(
-      path: '/edit',
-      builder: (context, state) => EditDisease(),
     ),
   ]
 );

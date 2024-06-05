@@ -57,7 +57,7 @@ class _HomeState extends State<Home> {
           CustomSearchBar(),
           if(widget.controller.isLogged()) ... [ElevatedButton(
               onPressed: () => {
-                context.go("/add")
+                context.goNamed("add")
               }, 
               child: const Text("+Doença")
             )],
@@ -121,7 +121,7 @@ class _HomeState extends State<Home> {
                                     style: ElevatedButton.styleFrom(backgroundColor: AppColors.colorWhite,
                                     shape: const RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(4.0)))),
                                     onPressed: () => {
-                                      context.go("/doenca", extra: disease)
+                                      context.goNamed("doenca", extra: disease)
                                       },
                                     child: Text("Saiba mais", style: GoogleFonts.lora(),),
                                     )
