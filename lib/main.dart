@@ -1,5 +1,3 @@
-import 'dart:js';
-
 import 'package:edefinir/view/pages/apresentacao.dart';
 import 'package:edefinir/view/pages/diseases/add_disease.dart';
 import 'package:edefinir/view/pages/diseases/edit_disease.dart';
@@ -21,7 +19,7 @@ final _router = GoRouter(
       name: "home",
       path: '/home',
       builder: (context, state) => Home(),
-      routes: [
+      routes: <RouteBase>[
         GoRoute(
           name: "add",
           path: 'add',
@@ -31,7 +29,7 @@ final _router = GoRouter(
           name: "doenca",
           path: 'doenca',
           builder: (context, state) => DetailsDisease(),
-          routes: [
+          routes: <RouteBase>[
             GoRoute(
               name: "edit",
               path: 'edit',
