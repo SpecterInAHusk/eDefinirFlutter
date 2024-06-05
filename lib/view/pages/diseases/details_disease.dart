@@ -1,20 +1,15 @@
-import 'package:edefinir/controller/disease_controllers/details_disease_controller.dart';
 import 'package:edefinir/model/entities/disease.dart';
 import 'package:edefinir/view/components/colors/colors.dart';
 import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-class DetailsDisease extends StatelessWidget {
-
-  DetailsDisease({super.key});
-
-  final DetailsDiseaseController diseaseController = DetailsDiseaseController();
+class Details extends StatelessWidget {
+  const Details({super.key});
 
   @override
   Widget build(BuildContext context) {
     //Doença por parametro
-    final Disease disease = GoRouterState.of(context).extra! as Disease;
+    Disease disease = ModalRoute.of(context)!.settings.arguments as Disease;
 
     return Scaffold(
       appBar: AppBar(
@@ -22,15 +17,9 @@ class DetailsDisease extends StatelessWidget {
         title: Text(disease.name),
       ),
       body: Center(
-        child: ListView(
-          // mainAxisAlignment: MainAxisAlignment.center,
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            if(diseaseController.isLogged()) ... [ElevatedButton(
-              onPressed: () => {
-                context.goNamed("edit", extra: disease)
-              }, 
-              child: const Text("Editar")
-            )],
             Card(
               shape: const RoundedRectangleBorder(
                   borderRadius: BorderRadius.all(Radius.circular(20))),
@@ -42,8 +31,7 @@ class DetailsDisease extends StatelessWidget {
                               const TextStyle(color: AppColors.colorWhite),
                           fontSize: 30)),
                 ]), //TODO ícone de seta
-                collapsedBackgroundColor: AppColors.colorBlueLight,
-                initiallyExpanded: false,
+                initiallyExpanded: true,
                 iconColor: AppColors.colorWhite,
                 maintainState: true,
                 expandedAlignment: Alignment.center,
@@ -91,7 +79,6 @@ class DetailsDisease extends StatelessWidget {
                               const TextStyle(color: AppColors.colorWhite),
                           fontSize: 30)),
                 ]), //TODO ícone de seta
-                collapsedBackgroundColor: AppColors.colorBlueLight,
                 initiallyExpanded: false,
                 iconColor: AppColors.colorWhite,
                 maintainState: true,
@@ -140,7 +127,6 @@ class DetailsDisease extends StatelessWidget {
                               const TextStyle(color: AppColors.colorWhite),
                           fontSize: 30)),
                 ]), //TODO ícone de seta
-                collapsedBackgroundColor: AppColors.colorBlueLight,
                 initiallyExpanded: false,
                 iconColor: AppColors.colorWhite,
                 maintainState: true,
@@ -189,7 +175,6 @@ class DetailsDisease extends StatelessWidget {
                               const TextStyle(color: AppColors.colorWhite),
                           fontSize: 30)),
                 ]), //TODO ícone de seta
-                collapsedBackgroundColor: AppColors.colorBlueLight,
                 initiallyExpanded: false,
                 iconColor: AppColors.colorWhite,
                 maintainState: true,
