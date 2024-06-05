@@ -124,7 +124,16 @@ class _CreateDiseaseState extends State<EditDisease>{
                   child: ElevatedButton(
                     onPressed: () {
                       if(_formKey.currentState!.validate()){
-                        
+                        widget.controller.updateDisease(
+                          id: disease.id,
+                          name: nome,
+                          explanation: explicacao,
+                          overview: resumo,
+                          benefits: beneficios,
+                          recommendations: recomendacao,
+                          contraIndications: contraIndicacao
+                        );
+                        context.go("/home");
                       }
                     }, 
                     child: const Text("Editar"))

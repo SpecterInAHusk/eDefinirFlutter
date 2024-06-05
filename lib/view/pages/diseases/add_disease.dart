@@ -1,6 +1,7 @@
 
 import 'package:edefinir/controller/disease_controllers/add_disease_controller.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
 // ignore: must_be_immutable
 class AddDisease extends StatefulWidget{
@@ -121,6 +122,7 @@ class _CreateDiseaseState extends State<AddDisease>{
                           recommendations: recomendacao,
                           contraIndications: contraIndicacao
                         );
+                        context.go("/home");
                       }
                     }, 
                     child: const Text("Criar"))
