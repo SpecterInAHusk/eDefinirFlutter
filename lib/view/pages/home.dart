@@ -80,8 +80,7 @@ class _HomeState extends State<Home> {
                                   fontSize: 30)),
                                   ]
                      ), //TODO ícone de seta
-                    collapsedBackgroundColor: AppColors.colorBlueLight,
-                    initiallyExpanded: false,
+                    initiallyExpanded: true,
                     iconColor: AppColors.colorWhite,
                     maintainState: true,
                     expandedAlignment: Alignment.center,
