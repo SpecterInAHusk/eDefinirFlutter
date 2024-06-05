@@ -1,3 +1,4 @@
+import 'package:edefinir/model/entities/disease.dart';
 import 'package:edefinir/view/pages/apresentacao.dart';
 import 'package:edefinir/view/pages/diseases/add_disease.dart';
 import 'package:edefinir/view/pages/diseases/edit_disease.dart';
@@ -28,12 +29,16 @@ final _router = GoRouter(
         GoRoute(
           name: "doenca",
           path: 'doenca',
-          builder: (context, state) => DetailsDisease(),
+          builder: (context, state) => DetailsDisease(
+            disease: state.extra as Disease,
+          ),
           routes: <RouteBase>[
             GoRoute(
               name: "edit",
               path: 'edit',
-              builder: (context, state) => EditDisease(),
+              builder: (context, state) => EditDisease(
+                disease: state.extra as Disease,
+              ),
             ),
           ]
         ),

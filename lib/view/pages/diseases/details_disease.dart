@@ -6,15 +6,16 @@ import 'package:go_router/go_router.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class DetailsDisease extends StatelessWidget {
+  
+  final Disease disease;
 
-  DetailsDisease({super.key});
+  DetailsDisease({super.key, required this.disease});
 
   final DetailsDiseaseController diseaseController = DetailsDiseaseController();
 
   @override
   Widget build(BuildContext context) {
     //Doença por parametro
-    final Disease disease = GoRouterState.of(context).extra! as Disease;
 
     return Scaffold(
       appBar: AppBar(

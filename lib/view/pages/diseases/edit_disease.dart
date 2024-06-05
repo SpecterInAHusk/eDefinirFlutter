@@ -9,15 +9,17 @@ import 'package:go_router/go_router.dart';
 class EditDisease extends StatefulWidget{
 
   final EditDiseaseController controller = EditDiseaseController();
+  final Disease disease;
   
-  EditDisease({super.key});
+  EditDisease({super.key, required this.disease});
   
   @override
-  State<StatefulWidget> createState() => _CreateDiseaseState();
+  State<StatefulWidget> createState() => _CreateDiseaseState(disease);
 }
 
 class _CreateDiseaseState extends State<EditDisease>{
   final _formKey = GlobalKey<FormState>();
+  final Disease disease;
 
   String? nome;
   String? explicacao;
@@ -25,11 +27,11 @@ class _CreateDiseaseState extends State<EditDisease>{
   String? beneficios;
   String? recomendacao;
   String? contraIndicacao;
+  
+  _CreateDiseaseState(this.disease);
 
   @override
   Widget build(BuildContext context) {
-
-    Disease disease = GoRouterState.of(context).extra as Disease;
 
     return Scaffold(
       body: Center(
