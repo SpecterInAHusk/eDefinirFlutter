@@ -1,28 +1,20 @@
 
-import 'package:edefinir/controller/doencas/AdicionarDoencaController.dart';
-import 'package:edefinir/controller/home_controller.dart';
-import 'package:edefinir/model/entities/disease.dart';
+import 'package:edefinir/controller/disease_controllers/add_disease_controller.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
 // ignore: must_be_immutable
-class AdicionarDoenca extends StatefulWidget{
+class AddDisease extends StatefulWidget{
 
-  AdicionarDoencaController controller = AdicionarDoencaController();
-  HomeController teste = HomeController();
+  final AddDiseaseController controller = AddDiseaseController();
 
-  AdicionarDoenca({super.key}) {
-    espera();
-  }
-
-  espera() async{
-    List<Disease> doenca = await teste.getAllDiseas();
-  }
+  AddDisease({super.key});
   
   @override
-  State<StatefulWidget> createState() => _CriarDoencaState();
+  State<StatefulWidget> createState() => _CreateDiseaseState();
 }
 
-class _CriarDoencaState extends State<AdicionarDoenca>{
+class _CreateDiseaseState extends State<AddDisease>{
 
   final _formKey = GlobalKey<FormState>();
 
@@ -122,7 +114,7 @@ class _CriarDoencaState extends State<AdicionarDoenca>{
                   child: ElevatedButton(
                     onPressed: () {
                       if(_formKey.currentState!.validate()){
-                        widget.controller.adicionarDoenca(
+                        widget.controller.createDisease(
                           name: nome,
                           explanation: explicacao,
                           overview: resumo,
@@ -130,6 +122,7 @@ class _CriarDoencaState extends State<AdicionarDoenca>{
                           recommendations: recomendacao,
                           contraIndications: contraIndicacao
                         );
+                        context.goNamed("home");
                       }
                     }, 
                     child: const Text("Criar"))

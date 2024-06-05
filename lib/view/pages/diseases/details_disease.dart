@@ -17,8 +17,8 @@ class Details extends StatelessWidget {
         title: Text(disease.name),
       ),
       body: Center(
-        child: ListView(
-          // mainAxisAlignment: MainAxisAlignment.center,
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Card(
               shape: const RoundedRectangleBorder(
@@ -31,7 +31,6 @@ class Details extends StatelessWidget {
                               const TextStyle(color: AppColors.colorWhite),
                           fontSize: 30)),
                 ]), //TODO ícone de seta
-                collapsedBackgroundColor: AppColors.colorBlueLight,
                 initiallyExpanded: true,
                 iconColor: AppColors.colorWhite,
                 maintainState: true,
