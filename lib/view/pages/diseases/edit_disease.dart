@@ -138,6 +138,15 @@ class _CreateDiseaseState extends State<EditDisease>{
                     }, 
                     child: const Text("Editar"))
                   ),
+                   Padding(
+                  padding: const EdgeInsets.symmetric(vertical: 16),
+                  child: ElevatedButton(
+                    onPressed: () {
+                      widget.controller.deleteDisease(id: disease.id);
+                      context.goNamed("home");
+                    }, 
+                    child: const Text("Excluir"))
+                  ),
               ],
             ),
           )

@@ -18,6 +18,10 @@ class EditDiseaseController{
     diseaseService.update(disease, id);
   }
 
+  deleteDisease({id}){
+    diseaseService.delete(id);
+  }
+
   bool isLogged(){
     if(authService.getUser() != null){
       return true;
