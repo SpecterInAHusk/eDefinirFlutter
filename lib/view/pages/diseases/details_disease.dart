@@ -72,7 +72,9 @@ class DetailsDisease extends StatelessWidget {
                                   padding: const EdgeInsets.all(8.0),
                                   child: Text(
                                     disease.explanation,
-                                    style: GoogleFonts.lora(),
+                                    style: GoogleFonts.lora(
+                                      fontSize: 20
+                                    ),
                                   ),
                                 ),
                               )
@@ -121,7 +123,9 @@ class DetailsDisease extends StatelessWidget {
                                   padding: const EdgeInsets.all(8.0),
                                   child: Text(
                                     disease.recommendations,
-                                    style: GoogleFonts.lora(),
+                                    style: GoogleFonts.lora(
+                                      fontSize: 17.5
+                                    ),
                                   ),
                                 ),
                               )
