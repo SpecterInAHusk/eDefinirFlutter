@@ -23,70 +23,72 @@ class DetailsDisease extends StatelessWidget {
         title: Text(disease.name),
       ),
       body: Center(
-        child: ListView(
-          // mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            if(diseaseController.isLogged()) ... [ElevatedButton(
-              onPressed: () => {
-                context.goNamed("edit", extra: disease)
-              }, 
-              child: const Text("Editar")
-            )],
-            Card(
-              shape: const RoundedRectangleBorder(
-              borderRadius: BorderRadius.all(Radius.circular(20))),
-              child: ExpansionTile(
-                title: Row(children: [
-                  Text("Detalhes",
-                    style: GoogleFonts.lora(
-                      textStyle: const TextStyle(color: AppColors.colorWhite),
-                      fontSize: 30
-                    )
-                  ),
-                ]), //TODO ícone de seta
-                collapsedBackgroundColor: AppColors.colorBlueLight,
-                initiallyExpanded: false,
-                iconColor: AppColors.colorWhite,
-                maintainState: true,
-                expandedAlignment: Alignment.center,
-                backgroundColor: AppColors.colorBlueLight,
+        child: SizedBox(width: 320, // tenho q achar uma solução que não use padding tbh <<- foi aqui q eu mudei
+          child:  ListView(
+            // mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              if(diseaseController.isLogged()) ... [ElevatedButton(
+                onPressed: () => {
+                  context.goNamed("edit", extra: disease)
+                }, 
+                child: const Text("Editar")
+              )],
+              Card(
                 shape: const RoundedRectangleBorder(
-                    borderRadius: BorderRadius.all(Radius.circular(20))),
-                collapsedShape: const RoundedRectangleBorder(
-                    borderRadius: BorderRadius.all(Radius.circular(20))),
-                //Elementos dos cartões
-                children: [
-                  IntrinsicHeight(
-                    child: Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: Column(
-                        children: [
-                          Container(
-                            width: double.infinity,
-                            decoration: const BoxDecoration(
-                              color: AppColors.colorWhite,
-                              borderRadius: BorderRadius.all(
-                                Radius.circular(20),
-                              ),
-                            ),
-                            child: Padding(
-                              padding: const EdgeInsets.all(8.0),
-                              child: Text(
-                                disease.explanation,
-                                style: GoogleFonts.lora(
-                                  fontSize: 20
+                borderRadius: BorderRadius.all(Radius.circular(20))),
+                child: ExpansionTile(
+                  title: Row(children: [
+                    Text("Detalhes",
+                      style: GoogleFonts.lora(
+                        textStyle: const TextStyle(color: AppColors.colorWhite),
+                        fontSize: 30
+                      )
+                    ),
+                  ]), //TODO ícone de seta
+                  collapsedBackgroundColor: AppColors.colorBlueLight,
+                  initiallyExpanded: false,
+                  iconColor: AppColors.colorWhite,
+                  maintainState: true,
+                  expandedAlignment: Alignment.center,
+                  backgroundColor: AppColors.colorBlueLight,
+                  shape: const RoundedRectangleBorder(
+                      borderRadius: BorderRadius.all(Radius.circular(20))),
+                  collapsedShape: const RoundedRectangleBorder(
+                      borderRadius: BorderRadius.all(Radius.circular(20))),
+                  //Elementos dos cartões
+                  children: [
+                    IntrinsicHeight(
+                      child: Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: Column(
+                          children: [
+                            Container(
+                              width: double.infinity,
+                              decoration: const BoxDecoration(
+                                color: AppColors.colorWhite,
+                                borderRadius: BorderRadius.all(
+                                  Radius.circular(20),
                                 ),
                               ),
-                            ),
-                          )
-                        ],
+                              child: Padding(
+                                padding: const EdgeInsets.all(8.0),
+                                child: Text(
+                                  disease.explanation,
+                                  style: GoogleFonts.lora(
+                                    fontSize: 20
+                                  ),
+                                ),
+                              ),
+                            )
+                          ],
+                        )
                       )
-                    )
-                  ),
-                ],
+                    ),
+                  ],
+                ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );

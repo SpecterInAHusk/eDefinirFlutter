@@ -23,6 +23,7 @@ class _HomeState extends State<Home> {
 
   //Lista de Doenças
   late List<Disease> diseases = [];
+  late List<Disease> _filteredDiseases = [];
 
   //Funcção de Inicialização do Estado, pega os valores da controller e joga na Lista de Doenças
   @override
@@ -30,11 +31,27 @@ class _HomeState extends State<Home> {
     super.initState();
     widget.controller.getAllDiseas().then((value) => {
       setState(
-        () => diseases = value
+        () {
+          diseases = value;
+          _filteredDiseases = value; // Initialize with all diseases
+        }
       )
     });
   }
 
+  void _runFilter(String enteredKeyword) {
+    List<Disease> results = [];
+    if (enteredKeyword.isEmpty) {
+      results = diseases;
+    } else {
+      results = diseases.where((disease) =>
+          disease.name.toLowerCase().contains(enteredKeyword.toLowerCase())).toList();
+    }
+
+    setState(() {
+      _filteredDiseases = results;
+    });
+  }
 //TODO estilizar barra superior na sua classe
 //TODO estilizar barra superior
 //TODO criar barra de pesquisa
@@ -54,7 +71,7 @@ class _HomeState extends State<Home> {
       drawer: CustomDrawer(),
       body: Column(
         children: [
-          CustomSearchBar(),
+          CustomSearchBar(onChanged: _runFilter), // Pass the _runFilter function
           if(widget.controller.isLogged()) ... [ElevatedButton(
               onPressed: () => {
                 context.goNamed("add")
@@ -62,75 +79,77 @@ class _HomeState extends State<Home> {
               child: const Text("+Doença")
             )],
           Expanded(
-            child: diseases.isEmpty //Verifica se a lista esta vazia
-            ? const Center(child: CircularProgressIndicator()): //Se estiver roda um carregamento
-            ListView.builder(
-              itemCount: diseases.length, //tamanho da lista
-              itemBuilder: (context, index) {
-                Disease disease = diseases[index]; //doenca do index da lista
-                return Card(
-                  shape: const RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(20))),
-                  child: ExpansionTile(
-                    title: Row(
-                        children: [
-                          Text(disease.name,
-                              style: GoogleFonts.lora(
-                                  textStyle: const TextStyle(
-                                      color: AppColors.colorWhite),
-                                  fontSize: 30)),
-                                  ]
-                     ), //TODO ícone de seta
-                    collapsedBackgroundColor: AppColors.colorBlueLight,
-                    initiallyExpanded: false,
-                    iconColor: AppColors.colorWhite,
-                    maintainState: true,
-                    expandedAlignment: Alignment.center,
-                    backgroundColor: AppColors.colorBlueLight,
-                    shape: const RoundedRectangleBorder(
-                        borderRadius: BorderRadius.all(Radius.circular(20))),
-                    collapsedShape: const RoundedRectangleBorder(
-                        borderRadius: BorderRadius.all(Radius.circular(20))),
-                    //Elementos dos cartões
-                    children: [
-                      IntrinsicHeight(
-                          child: Padding(
-                              padding: const EdgeInsets.all(8.0),
-                              child: Column(
-                                children: [
-                                  Container(
-                                    width: double.infinity,
-                                    decoration: const BoxDecoration(
-                                      color: AppColors.colorWhite,
-                                      borderRadius: BorderRadius.all(
-                                        Radius.circular(20),
+            child: SizedBox(width: 320, // tenho q achar uma solução que não use padding tbh <<- foi aqui q eu mudei
+              child: _filteredDiseases.isEmpty //Verifica se a lista esta vazia
+              ? const Center(child: CircularProgressIndicator()): //Se estiver roda um carregamento
+              ListView.builder(
+                itemCount: _filteredDiseases.length, //tamanho da lista
+                itemBuilder: (context, index) {
+                  Disease disease = _filteredDiseases[index]; //doenca do index da lista
+                  return Card(
+                    shape: const RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(20))),
+                    child: ExpansionTile(
+                      title: Row(
+                          children: [
+                            Text(disease.name,
+                                style: GoogleFonts.lora(
+                                    textStyle: const TextStyle(
+                                        color: AppColors.colorWhite),
+                                    fontSize: 30)),
+                                    ]
+                      ), //TODO ícone de seta
+                      collapsedBackgroundColor: AppColors.colorBlueLight,
+                      initiallyExpanded: false,
+                      iconColor: AppColors.colorWhite,
+                      maintainState: true,
+                      expandedAlignment: Alignment.center,
+                      backgroundColor: AppColors.colorBlueLight,
+                      shape: const RoundedRectangleBorder(
+                          borderRadius: BorderRadius.all(Radius.circular(20))),
+                      collapsedShape: const RoundedRectangleBorder(
+                          borderRadius: BorderRadius.all(Radius.circular(20))),
+                      //Elementos dos cartões
+                      children: [
+                        IntrinsicHeight(
+                            child: Padding(
+                                padding: const EdgeInsets.all(8.0),
+                                child: Column(
+                                  children: [
+                                    Container(
+                                      width: double.infinity,
+                                      decoration: const BoxDecoration(
+                                        color: AppColors.colorWhite,
+                                        borderRadius: BorderRadius.all(
+                                          Radius.circular(20),
+                                        ),
+                                      ),
+                                      child: Padding(
+                                        padding: const EdgeInsets.all(8.0),
+                                        child: Text(disease.overview,
+                                          style: GoogleFonts.lora(),
+                                        ),
                                       ),
                                     ),
-                                    child: Padding(
-                                      padding: const EdgeInsets.all(8.0),
-                                      child: Text(disease.overview,
-                                        style: GoogleFonts.lora(),
-                                      ),
-                                    ),
-                                  ),
-                                  const SizedBox(
-                                    height: 8.0,
-                                  ), //Espaço entre caixa de texto e botão
+                                    const SizedBox(
+                                      height: 8.0,
+                                    ), //Espaço entre caixa de texto e botão
 
-                                  //Botão para Detalhes
-                                  ElevatedButton(
-                                    style: ElevatedButton.styleFrom(backgroundColor: AppColors.colorWhite,
-                                    shape: const RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(4.0)))),
-                                    onPressed: () => {
-                                      context.goNamed("doenca", extra: disease)
-                                      },
-                                    child: Text("Saiba mais", style: GoogleFonts.lora(),),
-                                    )
-                                ],
-                              ))),
-                    ],
-                  ),
-                );
-              },
+                                    //Botão para Detalhes
+                                    ElevatedButton(
+                                      style: ElevatedButton.styleFrom(backgroundColor: AppColors.colorWhite,
+                                      shape: const RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(4.0)))),
+                                      onPressed: () => {
+                                        context.goNamed("doenca", extra: disease)
+                                        },
+                                      child: Text("Saiba mais", style: GoogleFonts.lora(),),
+                                      )
+                                  ],
+                                ))),
+                      ],
+                    ),
+                  );
+                },
+              ),
             ),
           ),
         ],
