@@ -18,15 +18,4 @@ class LoginController{
   dispose(){
     _errorController.close();
   }
-
-  signout() async{
-    await authService.siginout();
-  }
-
-  bool isLogged(){
-    if(authService.getUser() != null){
-      return true;
-    }
-    return false;
-  }
 }

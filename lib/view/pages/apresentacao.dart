@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
 class Apresentacao extends StatelessWidget{
   const Apresentacao({super.key});
@@ -12,7 +13,7 @@ class Apresentacao extends StatelessWidget{
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             const Text("Pagina de Apresentação"),
-            ElevatedButton(onPressed: () => {Navigator.pushNamed(context, '/home')}, child: const Text("Acesse aqui"))
+            ElevatedButton(onPressed: () => context.go('/home'), child: const Text("Acesse aqui"))
           ],
         ),
       ),

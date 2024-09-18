@@ -1,11 +1,16 @@
+import 'package:edefinir/controller/components_controllers/custom_drawer_controller.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 import '../colors/colors.dart';
 
 //TODO criar backdropfilter para efeito blur
-class MyDrawer extends StatelessWidget {
-  const MyDrawer({super.key});
+class CustomDrawer extends StatelessWidget {
+  
+  final controller = CustomDrawerController();
+
+  CustomDrawer({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -54,7 +59,7 @@ class MyDrawer extends StatelessWidget {
                       ),
                     ),
                   ),
-                  onTap: () => {Navigator.pushNamed(context, '/home')}
+                  onTap: () => {context.go("/home")}
                 ),
                 const Divider(color: Colors.grey),
                 ListTile(
@@ -71,7 +76,7 @@ class MyDrawer extends StatelessWidget {
                       ),
                     ),
                   ),
-                  onTap: () => {Navigator.pushNamed(context, '/login')}
+                  onTap: () => {context.go("/")}
                 ),
                 const Divider(color: Colors.grey),
                 ListTile(
@@ -88,7 +93,7 @@ class MyDrawer extends StatelessWidget {
                       ),
                     ),
                   ),
-                  onTap: () => {Navigator.pushNamed(context, '/login')}
+                  onTap: () => {context.go("/home")}
                 ),
                 const Divider(color: Colors.grey),
                 ListTile(
@@ -105,7 +110,7 @@ class MyDrawer extends StatelessWidget {
                       ),
                     ),
                   ),
-                  onTap: () => {Navigator.pushNamed(context, '/login')},
+                  onTap: () => {context.go("/")},
                     // Ação ao tocar
                 ),
               ],
@@ -113,16 +118,26 @@ class MyDrawer extends StatelessWidget {
           ),
           Padding(
             padding: const EdgeInsets.all(16.0),
-            child: ElevatedButton(
+            child: (controller.isLogged()) ? ElevatedButton(
               onPressed: () {
-                // Ação do botão
+                controller.logout();
+                context.go("/home");
               },
-              child: Text('Logout'),
               style: ElevatedButton.styleFrom(
-                padding: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
-                textStyle: TextStyle(fontSize: 20),
+                padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+                textStyle: const TextStyle(fontSize: 20),
               ),
-            ),
+              child: const Text('Logout'),
+            ) : ElevatedButton(
+              onPressed: () {
+               context.go("/login");
+              },
+              style: ElevatedButton.styleFrom(
+                padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+                textStyle: const TextStyle(fontSize: 20),
+              ),
+              child: const Text('Login'),
+            )
           ),
         ],
       )

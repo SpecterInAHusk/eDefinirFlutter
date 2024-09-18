@@ -1,15 +1,16 @@
 import 'package:edefinir/controller/home_controller.dart';
 import 'package:edefinir/model/entities/disease.dart';
+import 'package:go_router/go_router.dart';
 
-import '../components/widgets/drawer.dart';
-import '../components/widgets/search_bar.dart';
+import '../components/widgets/custom_drawer.dart';
+import '../components/widgets/custom_search_bar.dart';
 import 'package:flutter/material.dart';
 import '../components/colors/colors.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class Home extends StatefulWidget{
 
-  HomeController controller = HomeController();
+  final HomeController controller = HomeController();
 
   Home({super.key});
 
@@ -50,14 +51,16 @@ class _HomeState extends State<Home> {
         backgroundColor: AppColors.colorLightGrey,
         title: const Text("Home"),
       ),
-      drawer: MyDrawer(),
+      drawer: CustomDrawer(),
       body: Column(
         children: [
-          ElevatedButton(
-            onPressed: () => {Navigator.pushNamed(context, '/login')},
-            child: const Text("Ir para Login"), //WARN esse botão é apenas para teste,
-          ),
           CustomSearchBar(),
+          if(widget.controller.isLogged()) ... [ElevatedButton(
+              onPressed: () => {
+                context.goNamed("add")
+              }, 
+              child: const Text("+Doença")
+            )],
           Expanded(
             child: diseases.isEmpty //Verifica se a lista esta vazia
             ? const Center(child: CircularProgressIndicator()): //Se estiver roda um carregamento
@@ -117,7 +120,9 @@ class _HomeState extends State<Home> {
                                   ElevatedButton(
                                     style: ElevatedButton.styleFrom(backgroundColor: AppColors.colorWhite,
                                     shape: const RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(4.0)))),
-                                    onPressed: () => {Navigator.pushNamed(context, '/doenca', arguments: disease)},
+                                    onPressed: () => {
+                                      context.goNamed("doenca", extra: disease)
+                                      },
                                     child: Text("Saiba mais", style: GoogleFonts.lora(),),
                                     )
                                 ],

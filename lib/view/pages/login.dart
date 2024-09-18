@@ -1,5 +1,7 @@
 import 'package:edefinir/controller/login_controller.dart';
+import 'package:edefinir/view/components/colors/colors.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
 // ignore: must_be_immutable
 class Login extends StatefulWidget{
@@ -23,6 +25,10 @@ class _LoginState extends State<Login>{
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        backgroundColor: AppColors.colorLightGrey,
+        title: const Text("Login"),
+      ),
       body: Center(
         child: Container(
           alignment: Alignment.center,
@@ -72,7 +78,7 @@ class _LoginState extends State<Login>{
                           password: _passwordController.text
                         );
                         if(noError){
-                          Navigator.pop(context);
+                          context.goNamed("home");
                         }else{
                           _passwordController.clear();
                           setState(() {
@@ -83,11 +89,6 @@ class _LoginState extends State<Login>{
                     }, 
                     child: const Text("Login"))
                 ),
-                ElevatedButton(
-                    onPressed: () {
-                      widget.controller.signout();
-                    },
-                    child: const Text("Logout"))
               ],
             )
           )
