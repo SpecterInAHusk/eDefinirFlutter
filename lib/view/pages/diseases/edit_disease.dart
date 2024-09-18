@@ -24,9 +24,6 @@ class _CreateDiseaseState extends State<EditDisease>{
   String? nome;
   String? explicacao;
   String? resumo;
-  String? beneficios;
-  String? recomendacao;
-  String? contraIndicacao;
   
   _CreateDiseaseState(this.disease);
 
@@ -82,45 +79,6 @@ class _CreateDiseaseState extends State<EditDisease>{
                     return null;
                   },
                 ),
-                TextFormField(
-                  initialValue: disease.benefits,
-                  decoration: const InputDecoration(
-                    hintText: "Beneficios"
-                  ),
-                  validator: (value) {
-                    if(value == null){
-                      return '';
-                    }
-                    beneficios = value;
-                    return null;
-                  },
-                ),
-                TextFormField(
-                  initialValue: disease.recommendations,
-                  decoration: const InputDecoration(
-                    hintText: "Recomendação"
-                  ),
-                  validator: (value) {
-                    if(value == null){
-                      return '';
-                    }
-                    recomendacao = value;
-                    return null;
-                  },
-                ),
-                TextFormField(
-                  initialValue: disease.contraIndications,
-                  decoration: const InputDecoration(
-                    hintText: "Contra Indicação"
-                  ),
-                  validator: (value) {
-                    if(value == null){
-                      return '';
-                    }
-                    contraIndicacao = value;
-                    return null;
-                  },
-                ),
                 Padding(
                   padding: const EdgeInsets.symmetric(vertical: 16),
                   child: ElevatedButton(
@@ -131,9 +89,6 @@ class _CreateDiseaseState extends State<EditDisease>{
                           name: nome,
                           explanation: explicacao,
                           overview: resumo,
-                          benefits: beneficios,
-                          recommendations: recomendacao,
-                          contraIndications: contraIndicacao
                         );
                         context.goNamed("home");
                       }

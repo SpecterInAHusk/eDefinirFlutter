@@ -1,5 +1,6 @@
 
 import 'package:edefinir/controller/disease_controllers/add_disease_controller.dart';
+import 'package:edefinir/model/entities/disease_atribute.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
@@ -21,9 +22,13 @@ class _CreateDiseaseState extends State<AddDisease>{
   String? nome;
   String? explicacao;
   String? resumo;
-  String? beneficios;
-  String? recomendacao;
-  String? contraIndicacao;
+
+  // Lista para armazenar os atributos dinamicamente
+  List<DiseaseAtribute> attributes = [];
+
+  // Controladores de texto para os TextFormFields dinâmicos
+  List<TextEditingController> titleControllers = [];
+  List<TextEditingController> descriptionControllers = [];
 
   @override
   Widget build(BuildContext context) {
@@ -73,54 +78,64 @@ class _CreateDiseaseState extends State<AddDisease>{
                     return null;
                   },
                 ),
-                TextFormField(
-                  decoration: const InputDecoration(
-                    hintText: "Beneficios"
-                  ),
-                  validator: (value) {
-                    if(value == null){
-                      return '';
-                    }
-                    beneficios = value;
-                    return null;
+
+              ...List.generate(titleControllers.length, (index) {
+                  return Column(
+                    children: [
+                      TextFormField(
+                        controller: titleControllers[index],
+                        decoration: const InputDecoration(hintText: "Título do Atributo"),
+                        validator: (value) {
+                          if (value == null || value.isEmpty) {
+                            return 'Título vazio';
+                          }
+                          return null;
+                        },
+                      ),
+                      TextFormField(
+                        controller: descriptionControllers[index],
+                        decoration: const InputDecoration(hintText: "Descrição do Atributo"),
+                        validator: (value) {
+                          if (value == null || value.isEmpty) {
+                            return 'Descrição vazia';
+                          }
+                          return null;
+                        },
+                      ),
+                    ],
+                  );
+                }),
+                
+                // Botão para adicionar novos campos de atributos (título e descrição)
+                ElevatedButton(
+                  onPressed: () {
+                    setState(() {
+                      // Adicionar novos controladores de texto para título e descrição
+                      titleControllers.add(TextEditingController());
+                      descriptionControllers.add(TextEditingController());
+
+                      // Adicionar novo atributo à lista de atributos
+                      attributes.add(DiseaseAtribute(title: '', description: ''));
+                    });
                   },
+                  child: const Text("Adicionar Atributo"),
                 ),
-                TextFormField(
-                  decoration: const InputDecoration(
-                    hintText: "Recomendação"
-                  ),
-                  validator: (value) {
-                    if(value == null){
-                      return '';
-                    }
-                    recomendacao = value;
-                    return null;
-                  },
-                ),
-                TextFormField(
-                  decoration: const InputDecoration(
-                    hintText: "Contra Indicação"
-                  ),
-                  validator: (value) {
-                    if(value == null){
-                      return '';
-                    }
-                    contraIndicacao = value;
-                    return null;
-                  },
-                ),
+
                 Padding(
                   padding: const EdgeInsets.symmetric(vertical: 16),
                   child: ElevatedButton(
                     onPressed: () {
                       if(_formKey.currentState!.validate()){
+                        for (int i = 0; i < titleControllers.length; i++) {
+                          attributes[i].title = titleControllers[i].text;
+                          attributes[i].description = descriptionControllers[i].text;
+                        }
+
                         widget.controller.createDisease(
                           name: nome,
                           explanation: explicacao,
                           overview: resumo,
-                          benefits: beneficios,
-                          recommendations: recomendacao,
-                          contraIndications: contraIndicacao
+                          atributes: attributes
                         );
                         context.goNamed("home");
                       }

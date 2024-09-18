@@ -6,14 +6,12 @@ class EditDiseaseController{
   AuthService authService = AuthService();
   DiseaseService diseaseService = DiseaseService();
   
-  updateDisease({id, name, explanation, overview, benefits, recommendations, contraIndications}){
+  updateDisease({id, name, explanation, overview, atributes}){
     Disease disease = Disease(
       name: name,
       explanation: explanation,
       overview: overview,
-      benefits: benefits,
-      recommendations: recommendations,
-      contraIndications: contraIndications
+      atributes: atributes
     );
     diseaseService.update(disease, id);
   }
