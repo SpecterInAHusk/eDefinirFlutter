@@ -1,14 +1,14 @@
-class DiseaseAtribute{
+class DiseaseAttribute{
 
   String title;
   String description;
 
-  DiseaseAtribute({
+  DiseaseAttribute({
     required this.title,
     required this.description
   });
 
-  DiseaseAtribute.fromMap(Map snapshot) :
+  DiseaseAttribute.fromMap(Map snapshot) :
     title = snapshot['title'],
     description = snapshot['description'];
   

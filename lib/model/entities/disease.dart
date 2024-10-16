@@ -1,6 +1,6 @@
 
 
-import 'package:edefinir/model/entities/disease_atribute.dart';
+import 'package:edefinir/model/entities/disease_attribute.dart';
 
 class Disease{
 
@@ -8,13 +8,13 @@ class Disease{
   String name;
   String explanation;
   String overview;
-  List<DiseaseAtribute>? atributes;
+  List<DiseaseAttribute>? attributes;
 
   Disease({
     required this.name,
     required this.explanation,
     required this.overview,
-    required this.atributes
+    required this.attributes
     });
 
   Disease.fromMap(Map snapshot, String? id) :
@@ -22,8 +22,8 @@ class Disease{
       name = snapshot['name'],
       explanation = snapshot['explanation'],
       overview = snapshot['overview'],
-      atributes = (snapshot['attributes'] as List<dynamic>?)
-            ?.map((item) => DiseaseAtribute.fromMap(item as Map<String, dynamic>))
+      attributes = (snapshot['attributes'] as List<dynamic>?)
+            ?.map((item) => DiseaseAttribute.fromMap(item as Map<String, dynamic>))
             .toList();
 
   toJson(){
@@ -32,7 +32,7 @@ class Disease{
       'name': name,
       'explanation': explanation,
       'overview': overview,
-      'atributes': atributes?.map((atribute) => atribute.toJson()).toList()
+      'attributes': attributes?.map((atribute) => atribute.toJson()).toList()
     };
   }
 
@@ -41,7 +41,7 @@ class Disease{
       'name': name,
       'explanation': explanation,
       'overview': overview,
-      'atributes': atributes?.map((atribute) => atribute.toJson()).toList()
+      'attributes': attributes?.map((atribute) => atribute.toJson()).toList()
     };
   }
 }

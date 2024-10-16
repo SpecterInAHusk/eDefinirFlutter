@@ -87,6 +87,62 @@ class DetailsDisease extends StatelessWidget {
                   ],
                 ),
               ),
+              ...List.generate(disease.attributes!.length, (index) {
+                return Card(
+                shape: const RoundedRectangleBorder(
+                borderRadius: BorderRadius.all(Radius.circular(20))),
+                child: ExpansionTile(
+                  title: Row(children: [
+                    Text(disease.attributes![index].title,
+                      style: GoogleFonts.lora(
+                        textStyle: const TextStyle(color: AppColors.colorWhite),
+                        fontSize: 30
+                      )
+                    ),
+                  ]), //TODO ícone de seta
+                  collapsedBackgroundColor: AppColors.colorBlueLight,
+                  initiallyExpanded: false,
+                  iconColor: AppColors.colorWhite,
+                  maintainState: true,
+                  expandedAlignment: Alignment.center,
+                  backgroundColor: AppColors.colorBlueLight,
+                  shape: const RoundedRectangleBorder(
+                      borderRadius: BorderRadius.all(Radius.circular(20))),
+                  collapsedShape: const RoundedRectangleBorder(
+                      borderRadius: BorderRadius.all(Radius.circular(20))),
+                  //Elementos dos cartões
+                  children: [
+                    IntrinsicHeight(
+                      child: Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: Column(
+                          children: [
+                            Container(
+                              width: double.infinity,
+                              decoration: const BoxDecoration(
+                                color: AppColors.colorWhite,
+                                borderRadius: BorderRadius.all(
+                                  Radius.circular(20),
+                                ),
+                              ),
+                              child: Padding(
+                                padding: const EdgeInsets.all(8.0),
+                                child: Text(
+                                  disease.attributes![index].description,
+                                  style: GoogleFonts.lora(
+                                    fontSize: 20
+                                  ),
+                                ),
+                              ),
+                            )
+                          ],
+                        )
+                      )
+                    ),
+                  ],
+                ),
+              );
+              })
             ],
           ),
         ),

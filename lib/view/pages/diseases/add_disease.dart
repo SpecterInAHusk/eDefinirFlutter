@@ -1,6 +1,6 @@
 
 import 'package:edefinir/controller/disease_controllers/add_disease_controller.dart';
-import 'package:edefinir/model/entities/disease_atribute.dart';
+import 'package:edefinir/model/entities/disease_attribute.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
@@ -24,7 +24,7 @@ class _CreateDiseaseState extends State<AddDisease>{
   String? resumo;
 
   // Lista para armazenar os atributos dinamicamente
-  List<DiseaseAtribute> attributes = [];
+  List<DiseaseAttribute> attributes = [];
 
   // Controladores de texto para os TextFormFields dinâmicos
   List<TextEditingController> titleControllers = [];
@@ -115,7 +115,7 @@ class _CreateDiseaseState extends State<AddDisease>{
                       descriptionControllers.add(TextEditingController());
 
                       // Adicionar novo atributo à lista de atributos
-                      attributes.add(DiseaseAtribute(title: '', description: ''));
+                      attributes.add(DiseaseAttribute(title: '', description: ''));
                     });
                   },
                   child: const Text("Adicionar Atributo"),
@@ -135,7 +135,7 @@ class _CreateDiseaseState extends State<AddDisease>{
                           name: nome,
                           explanation: explicacao,
                           overview: resumo,
-                          atributes: attributes
+                          attributes: attributes
                         );
                         context.goNamed("home");
                       }
